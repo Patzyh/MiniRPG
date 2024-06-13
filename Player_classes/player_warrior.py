@@ -29,6 +29,3 @@ class Warrior:
 
     def set_def(self, df):
         self.__defence = df
-
-
-

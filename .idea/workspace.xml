@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="test und so">
-      <change afterPath="$PROJECT_DIR$/Player_classes/player_archer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Player_classes/player_mage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Player_classes/player_warrior.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/fonts/Montserrat-VariableFont_wght.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/theme/orange.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/RPG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RPG.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player_classes/player_archer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player_classes/player_archer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player_classes/player_warrior.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player_classes/player_warrior.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainui.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_class.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,38 +28,44 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2hpkF1YV6EGlkPuxuy0uv9YGm2N" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/crafx/PycharmProjects/MiniRPG/resources/theme",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\crafx\PycharmProjects\MiniRPG\resources\theme" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.mainui">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="RPG" />
-      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.9 (helloworld)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -69,13 +81,13 @@
     </configuration>
     <configuration name="mainui" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="RPG" />
-      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.9 (MiniRPG)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -115,6 +127,7 @@
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test und so" />
     <option name="LAST_COMMIT_MESSAGE" value="test und so" />
   </component>
