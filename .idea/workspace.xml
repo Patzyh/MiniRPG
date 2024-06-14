@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="yurrgurt">
+    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="Spiel Klasse neue Methoden">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/player_class.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_class.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +55,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
   <component name="RunManager" selected="Python.main">
@@ -71,7 +68,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (MiniRPG)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -136,24 +132,60 @@
       <option name="project" value="LOCAL" />
       <updated>1718298322980</updated>
     </task>
-    <task id="LOCAL-00002" summary="yurrgurt">
+    <task id="LOCAL-00002" summary="test und so">
       <option name="closed" value="true" />
-      <created>1718378792757</created>
+      <created>1718369973696</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1718378792757</updated>
+      <updated>1718369973696</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Spiel Klasse neue Methoden">
+      <option name="closed" value="true" />
+      <created>1718379312643</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718379312643</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Spiel Klasse neue Methoden">
+      <option name="closed" value="true" />
+      <created>1718380059845</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718380059845</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Spiel Klasse neue Methoden">
+      <option name="closed" value="true" />
+      <created>1718380623557</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718380623557</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test und so" />
-    <MESSAGE value="yurrgurt" />
-    <option name="LAST_COMMIT_MESSAGE" value="yurrgurt" />
+    <MESSAGE value="Spiel Klasse neue Methoden" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spiel Klasse neue Methoden" />
   </component>
   <component name="WfRunsListSearchHistory">{
   &quot;history&quot;: [
+    {
+      &quot;branch&quot;: &quot;master&quot;,
+      &quot;currentBranchFilter&quot;: true
+    },
+    {
+      &quot;branch&quot;: &quot;master&quot;,
+      &quot;currentBranchFilter&quot;: true
+    },
+    {
+      &quot;branch&quot;: &quot;master&quot;,
+      &quot;currentBranchFilter&quot;: true
+    },
     {
       &quot;branch&quot;: &quot;master&quot;,
       &quot;currentBranchFilter&quot;: true

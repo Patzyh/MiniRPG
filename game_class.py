@@ -44,13 +44,32 @@ class Spiel:
         self.__rounds += 1
         self.start_next_round()
         if self.__rounds == 5:
-            pass
+            self.the_dark_forest()
+        elif self.__rounds == 12:
+            self.hounted_castle()
+        elif self.__rounds == 20:
+            self.malakars_tower()
 
 
     def the_dark_forest(self):
         print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.")
         print("Du hörst Geräusche um dich herum und bist auf der Hut.")
+
+        self.__location = "The Dark Forest"
         self.start_next_round()
+
+    def hounted_castle(self):
+        print("Du befindest dich vor einem alten Schloss. Es ist verlassen und du siehst nur noch die Ruinen.")
+        print("Dir läuft ein kalter Schauer über den Rücken. ")
+        self.__location = "The Hounted Castle"
+        self.start_next_round()
+
+    def malakars_tower(self):
+        print("Du befindest dich vor Malakars Turm. Ein finsterer Ort, an dem böse Mächte wirken.")
+        print("Du spürst die dunkle Aura, die von dem Turm ausgeht.")
+        self.__location = "Malakars Tower"
+        self.start_next_round()
+
     def start_next_round(self):
         standard_gegner = random.randint(1, 5)
         stealth = random.randint(1, 20)
@@ -66,6 +85,8 @@ class Spiel:
 
 
 
+    def get_location(self):
+        return self.__location
 
     def spielende(self):
         self.spielstand()
