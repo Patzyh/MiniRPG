@@ -52,20 +52,20 @@ class App(tk.CTk):
             self.__button = tk.CTkButton(self, text="Weiter", font=("Montserrat Black", 20, "bold"), command=self.save_name)
             self.__button.pack(pady=10, side="bottom")
         elif page == 2:
-            self.__label = tk.CTkLabel(self, text="ROLE SELECT", font=("Montserrat Black", 40))
+            self.__label = tk.CTkLabel(self, text="WÄHLE DEINE ROLLE", font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
 
-            self.__fighter = tk.CTkButton(self, text="Kämpfer", font=("Montserrat Black", 20, "bold"), image=self.__fighter, compound="top", command=lambda: self.selected_role(1), fg_color="transparent", hover_color=("#ff0000", "#424242"))
-            self.__fighter.pack(padx=23, pady=70, side="left", anchor="n")
+            self.__fighterbtn = tk.CTkButton(self, text="Kämpfer", font=("Montserrat Black", 20, "bold"), image=self.__fighter, compound="top", command=lambda: self.selected_role(1), fg_color="transparent", hover_color=("#ff0000", "#424242"))
+            self.__fighterbtn.pack(padx=23, pady=70, side="left", anchor="n")
 
-            self.__archer = tk.CTkButton(self, text="Bogenschütze", font=("Montserrat Black", 20, "bold"), image=self.__archer, compound="top", command=lambda: self.selected_role(2), fg_color="transparent", hover_color=("#ff0000", "#424242"))
-            self.__archer.pack(padx=23, pady=70, side="left", anchor="n")
+            self.__archerbtn = tk.CTkButton(self, text="Bogenschütze", font=("Montserrat Black", 20, "bold"), image=self.__archer, compound="top", command=lambda: self.selected_role(2), fg_color="transparent", hover_color=("#ff0000", "#424242"))
+            self.__archerbtn.pack(padx=23, pady=70, side="left", anchor="n")
 
-            self.__mage = tk.CTkButton(self, text="Magier", font=("Montserrat Black", 20, "bold"), image=self.__mage, compound="top", command=lambda: self.selected_role(3), fg_color="transparent", hover_color=("#ff0000", "#424242"))
-            self.__mage.pack(padx=23, pady=70, side="left", anchor="n")
+            self.__magebtn = tk.CTkButton(self, text="Magier", font=("Montserrat Black", 20, "bold"), image=self.__mage, compound="top", command=lambda: self.selected_role(3), fg_color="transparent", hover_color=("#ff0000", "#424242"))
+            self.__magebtn.pack(padx=23, pady=70, side="left", anchor="n")
 
-            self.__button = tk.CTkButton(self, text="Zurück", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
-            self.__button.place(x=10, y=360)
+            self.__buttonbtn = tk.CTkButton(self, text="Zurück", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
+            self.__buttonbtn.place(x=10, y=360)
         elif page == 3:
             self.__label = tk.CTkLabel(self, text=self.__role.upper(), font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
@@ -93,7 +93,6 @@ class App(tk.CTk):
             self.__levelnum = tk.CTkLabel(self, text="10", font=("Montserrat Black", 20), bg_color="transparent", anchor="center")
             self.__levelnum.place(x=565, y=330)
 
-            # make level go full and clear it to test
             self.__level.set(0)
 
             self.__health = tk.CTkProgressBar(self, width=250, height=15, progress_color="#2ecc71", mode="determinate", determinate_speed=0.2, orientation="horizontal")
