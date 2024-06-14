@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="Player Klassen" />
+    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="test und so">
+      <change afterPath="$PROJECT_DIR$/Player_classes/player_archer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Player_classes/player_mage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Player_classes/player_warrior.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,11 +44,6 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\MiniRPG\RPG\Player_classes" />
-    </key>
-  </component>
   <component name="RunManager" selected="Python.mainui">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="RPG" />
@@ -112,28 +111,11 @@
       <option name="project" value="LOCAL" />
       <updated>1718298322980</updated>
     </task>
-    <task id="LOCAL-00002" summary="Player Klassen">
-      <option name="closed" value="true" />
-      <created>1718300083033</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1718300083033</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Player Klassen">
-      <option name="closed" value="true" />
-      <created>1718300100439</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1718300100439</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test und so" />
-    <MESSAGE value="Player Klassen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player Klassen" />
+    <option name="LAST_COMMIT_MESSAGE" value="test und so" />
   </component>
 </project>
