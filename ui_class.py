@@ -1,5 +1,6 @@
 import customtkinter as tk
 from tkextrafont import Font
+from playsound import playsound
 from PIL import Image
 import main
 
@@ -114,6 +115,10 @@ class App(tk.CTk):
         self.__infolabel.pack(pady=50, padx=50, side="bottom")
         self.after(time, self.__infolabel.destroy)
 
+    def play_title_music(self):
+        playsound("resources/sounds/blind_pick_music.mp3")
+    def play_game_music(self):
+        playsound("resources/sounds/background_music.mp3")
     def update_health(self, health: float):
         self.__health.set(health)
 
