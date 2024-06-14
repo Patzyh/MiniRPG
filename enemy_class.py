@@ -1,9 +1,11 @@
 import random
 
 class Gegner:
-    def __init__(self):
+    def __init__(self,enemytype: int):
         self.__leben = 100
-        self.__enemytype = random.randint(1,3)
+        self.__enemytype = enemytype
+        if self.__enemytype == 0:
+            self.__enemytype = random.randint(1,3)
         self.__dead = False
 
         self.__enemy = [
