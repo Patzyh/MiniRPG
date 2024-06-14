@@ -1,6 +1,6 @@
 import customtkinter as tk
 from tkextrafont import Font
-from playsound import playsound
+import pygame
 from PIL import Image
 import main
 
@@ -115,10 +115,14 @@ class App(tk.CTk):
         self.after(time, self.__infolabel.destroy)
 
     def play_title_music(self):
-        playsound("resources/sounds/blind_pick_music.mp3")
+        pygame.mixer.init()
+        pygame.mixer.music.load("resources/sounds/blind_pick_music.mp3")
+        pygame.mixer.music.play()
 
     def play_game_music(self):
-        playsound("resources/sounds/background_music.mp3")
+        pygame.mixer.init()
+        pygame.mixer.music.load("resources/sounds/background_music.mp3")
+        pygame.mixer.music.play()
 
     def update_health(self, health: float):
         self.__health.set(health)
