@@ -78,7 +78,7 @@ class Spiel:
         self.start_next_round()
 
     def start_next_round(self):
-        standard_gegner = random.randint(1, 5)
+        standard_gegner = random.randint(1, 10)
         stealth = random.randint(1, 20)
         if standard_gegner == 1:
             self.initate_fight()
