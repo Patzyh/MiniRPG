@@ -3,7 +3,7 @@ from enemy_class import Gegner
 import random
 
 class Spiel:
-    def __init__(self, name, class_type, window):
+    def __init__(self, name, class_type, window): # yurr
         self.__punkte = 0
         self.__ui = window
         print(type(self.__ui))
