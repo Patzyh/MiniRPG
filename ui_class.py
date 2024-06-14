@@ -116,8 +116,10 @@ class App(tk.CTk):
 
     def play_title_music(self):
         playsound("resources/sounds/blind_pick_music.mp3")
+
     def play_game_music(self):
         playsound("resources/sounds/background_music.mp3")
+
     def update_health(self, health: float):
         self.__health.set(health)
 
