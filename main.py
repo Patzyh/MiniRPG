@@ -14,6 +14,7 @@ def main():
     window = ui.App("v0.0.1 INDEV")
     window.mainloop()
 
+
 print(__name__)
 
 if __name__ == "__main__":
