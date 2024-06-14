@@ -1,7 +1,7 @@
 import random
 
 class Gegner:
-    def __init__(self,enemytype: int):
+    def __init__(self, enemytype=0):
         self.__leben = 100
         self.__enemytype = enemytype
         if self.__enemytype == 0:

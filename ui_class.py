@@ -103,7 +103,16 @@ class App(tk.CTk):
             self.__healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
             self.__healthlabel.place(x=160, y=362)
 
+            self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Test lololol ich hab keine AHnung was ich hier reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.", 5000))
+            self.__debugbutton.place(x=300, y=250)
+
             main.initiate_game("test", self.__role, self)
+
+    def print(self, text, time):
+        self.__infolabel = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s",
+                                       wraplength=400)
+        self.__infolabel.pack(pady=50, padx=50, side="bottom")
+        self.after(time, self.__infolabel.destroy)
 
     def update_health(self, health: float):
         self.__health.set(health)
