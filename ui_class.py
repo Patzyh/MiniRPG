@@ -124,6 +124,9 @@ class App(tk.CTk):
         pygame.mixer.music.load("resources/sounds/background_music.mp3")
         pygame.mixer.music.play()
 
+    def stop_music(self):
+        pygame.mixer.music.stop()
+
     def update_health(self, health: float):
         self.__health.set(health)
 
