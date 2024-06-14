@@ -3,8 +3,8 @@ from enemy_class import Gegner
 
 
 class Spiel:
-    def __init__(self):
-        self.__spieler = Spieler()
+    def __init__(self, name, class_type):
+        self.__spieler = Spieler(name, class_type)
         self.__punkte = 0
 
     def spielstand(self):
