@@ -5,15 +5,15 @@ class Spieler:
     def __init__(self, name, class_type):
         self.__name = name
         self.__level = 0
-        if class_type == "Kämpfer":
-            self.__health = 19
-            self.__atk = 14
-        elif class_type == "Bogenschütze":
-            self.__health = 17
-            self.__atk = 17
-        elif class_type == "Magier":
-            self.__health = 15
-            self.__atk = 20
+        class_types = {
+            "Kämpfer": {"health": 19, "atk": 14},
+            "Bogenschütze": {"health": 17, "atk": 17},
+            "Magier": {"health": 15, "atk": 20}
+        }
+
+        if class_type in class_types:
+            self.__health = class_types[class_type]["health"]
+            self.__atk = class_types[class_type]["atk"]
 
     def get_name(self):
         return self.__name

@@ -97,7 +97,7 @@ class App(tk.CTk):
             self.__health = tk.CTkProgressBar(self, width=250, height=15, progress_color="#2ecc71", mode="determinate", determinate_speed=0.2, orientation="horizontal")
             self.__health.place(x=200, y=370)
 
-            self.__health.set(0)
+            self.__health.set(1)
 
             self.__healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
             self.__healthlabel.place(x=160, y=362)

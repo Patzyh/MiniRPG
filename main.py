@@ -1,9 +1,13 @@
 import ui_class as ui
 from game_class import Spiel
 
+spiel = None
+
 
 def initiate_game(name, class_type):
+    global spiel
     spiel = Spiel(name, class_type)
+    class_stats = [spiel.get_player().get_hp()]
 
 
 def main():

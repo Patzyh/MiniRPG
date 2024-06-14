@@ -26,9 +26,16 @@ class Spiel:
                 print("Spieler besiegt")
                 self.stop()
 
+    def get_player(self):
+        return self.__spieler
+
+
     def spielende(self):
         self.spielstand()
         print("Spielende")
 
     def stop(self):
         self.spielende()
+
+    def get_class_type(self):
+        return self.__spieler.get_class_type()
