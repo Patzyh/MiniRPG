@@ -14,7 +14,7 @@ class Gegner:
             {"name": "Geist", "angriff": 18, "leben": 13}
         ]
 
-        self.__enemy = self.enemy[self.enemytype - 1]
+        self.__enemy = self.__enemy[self.__enemytype - 1]
         self.__name = self.__enemy["name"]
 
     def get_dead(self):
