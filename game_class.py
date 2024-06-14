@@ -9,6 +9,7 @@ class Spiel:
         self.__spieler = Spieler(name, class_type)
         self.__punkte = 0
         self.__rounds = 0
+        self.__location = "On the Way to the Dark Forest"
 
     def spielstand(self):
         print("Punkte: ", self.__punkte)
@@ -38,10 +39,18 @@ class Spiel:
         if self.__spieler.get_hp() <= 0:
             print("Spieler besiegt")
             self.stop()
+
     def laufen(self):
         self.__rounds += 1
         self.start_next_round()
+        if self.__rounds == 5:
+            pass
 
+
+    def the_dark_forest(self):
+        print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.")
+        print("Du hörst Geräusche um dich herum und bist auf der Hut.")
+        self.start_next_round()
     def start_next_round(self):
         standard_gegner = random.randint(1, 5)
         stealth = random.randint(1, 20)
