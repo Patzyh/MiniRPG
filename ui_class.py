@@ -92,15 +92,23 @@ class App(tk.CTk):
             self.__levelnum.place(x=565, y=330)
 
             # make level go full and clear it to test
-            self.__level.start()
+            self.__level.set(0)
 
             self.__health = tk.CTkProgressBar(self, width=250, height=15, progress_color="#2ecc71", mode="determinate", determinate_speed=0.2, orientation="horizontal")
             self.__health.place(x=200, y=370)
+
+            self.__health.set(0)
 
             self.__healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
             self.__healthlabel.place(x=160, y=362)
 
             main.initiate_game("test", self.__role)
+
+    def update_health(self, health: float):
+        self.__health.set(health)
+
+    def update_level(self, level: float):
+        self.__level.set(level)
 
     def save_name(self):
         self.__name = self.__name.get()
