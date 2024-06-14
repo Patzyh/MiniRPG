@@ -1,6 +1,7 @@
 from player_class import Spieler
 from enemy_class import Gegner
 import random
+import time
 
 class Spiel:
     def __init__(self, name, class_type, window): # yurr
@@ -9,7 +10,7 @@ class Spiel:
         print(type(self.__ui))
         self.__spieler = Spieler(name, class_type, self.__ui)
         self.__rounds = 0
-        self.__location = "On the Way to the Dark Forest"
+        self.__location = "Auf dem Weg zum dunkel Wald"
 
     def spielstand(self):
         print("Punkte: ", self.__punkte)
@@ -23,11 +24,11 @@ class Spiel:
             self.__gegner.set_dead()
             self.__punkte += 1
             self.__gegner = Gegner()
-            print("Gegner besiegt")
+            self.__ui.print("Gegner besiegt", 4000)
         else:
             self.__spieler.set_hp(self.__spieler.get_hp() - self.__gegner.get_atk())
             if self.__spieler.get_hp() <= 0:
-                print("Spieler besiegt")
+                self.__ui.print("Spieler besiegt", 4000)
                 self.stop()
 
     def get_player(self):
@@ -37,37 +38,43 @@ class Spiel:
     def stealth_attack(self):
         self.__spieler.set_hp(self.__spieler.get_hp() - self.__gegner.get_atk())
         if self.__spieler.get_hp() <= 0:
-            print("Spieler besiegt")
+            self.__ui.print("Spieler besiegt",4000)
             self.stop()
 
     def laufen(self):
         self.__rounds += 1
         self.start_next_round()
         if self.__rounds == 5:
-            self.the_dark_forest()
+            self.__ui.print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.", 6000)
+            self.set_location("The Dark Forest")
         elif self.__rounds == 12:
-            self.hounted_castle()
+            self.__ui.print("Du befindest dich vor einem alten Schloss. Es ist verlassen und du siehst nur noch die Ruinen.", 6000)
+            self.set_location("The Hounted Castle")
         elif self.__rounds == 20:
+            self.__ui.print("Du befindest dich vor Malakars Turm. Ein finsterer Ort, an dem böse Mächte wirken.", 6000)
+            self.set_location("Malakars Tower")
+
+        if self.__location == "The Dark Forest":
+            self.the_dark_forest()
+        elif self.__location == "The Hounted Castle":
+            self.hounted_castle()
+        elif self.__location == "Malakars Tower":
             self.malakars_tower()
 
 
-    def the_dark_forest(self):
-        print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.")
-        print("Du hörst Geräusche um dich herum und bist auf der Hut.")
 
-        self.__location = "The Dark Forest"
+    def the_dark_forest(self):
+        self.__ui.print("Du hörst Geräusche um dich herum und bist auf der Hut.",4000)
+        self.set_location("Auf dem Weg zum Schloss")
         self.start_next_round()
 
     def hounted_castle(self):
-        print("Du befindest dich vor einem alten Schloss. Es ist verlassen und du siehst nur noch die Ruinen.")
-        print("Dir läuft ein kalter Schauer über den Rücken. ")
-        self.__location = "The Hounted Castle"
+        self.__ui.print("Dir läuft ein kalter Schauer über den Rücken. ", 4000)
+        self.set_location("Auf dem Weg zum Turm von Malakar")
         self.start_next_round()
 
     def malakars_tower(self):
-        print("Du befindest dich vor Malakars Turm. Ein finsterer Ort, an dem böse Mächte wirken.")
-        print("Du spürst die dunkle Aura, die von dem Turm ausgeht.")
-        self.__location = "Malakars Tower"
+        self.__ui.print("Du spürst die dunkle Aura, die von dem Turm ausgeht.", 4000)
         self.start_next_round()
 
     def start_next_round(self):
@@ -75,11 +82,11 @@ class Spiel:
         stealth = random.randint(1, 20)
         if standard_gegner == 1:
             self.initate_fight()
-            print("Ein Gegner ist in der Nähe. Ich sollte mich auf einen Kampf vorbereiten.")
+            self.__ui.print("Ein Gegner ist in der Nähe. Ich sollte mich auf einen Kampf vorbereiten.", 4000)
         else:
-            print("Es scheint kein Gegner in der Nähe zu sein. Ich kann wohl unbesorgt weitergehen.")
+            self.__ui.print("Es scheint kein Gegner in der Nähe zu sein. Ich kann wohl unbesorgt weitergehen.",4000)
         if stealth == 1:
-            print("Ein Gegener greift aus dem Schatten an.")
+            self.__ui.print("Ein Gegener greift aus dem Schatten an.", 4000)
             self.initate_fight()
             self.stealth_attack()
 
@@ -97,3 +104,5 @@ class Spiel:
 
     def get_class_type(self):
         return self.__spieler.get_class_type()
+    def set_location(self, location):
+        self.__location = location
