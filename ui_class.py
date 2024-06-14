@@ -1,6 +1,7 @@
 import customtkinter as tk
 from tkextrafont import Font
 from PIL import Image
+import time
 
 
 class App(tk.CTk):
@@ -72,8 +73,24 @@ class App(tk.CTk):
             self.button = tk.CTkButton(self, text="Zurück", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(1))
             self.button.place(x=10, y=360)
         elif page == 3:
-            self.label = tk.CTkLabel(self, text="Placeholder", font=("Montserrat Black", 40))
-            self.label.pack(pady=10)
+            self.level = tk.CTkProgressBar(self, width=15, height=250, orientation="vertical", progress_color="#3498db", mode="determinate", determinate_speed=0.2)
+            self.level.place(x=565, y=75)
+
+            self.levellabel = tk.CTkLabel(self, text="XP", font=("Montserrat Black", 20), bg_color="transparent")
+            self.levellabel.place(x=557, y=45)
+
+            self.levelnum = tk.CTkLabel(self, text="10", font=("Montserrat Black", 20), bg_color="transparent", anchor="center")
+            self.levelnum.place(x=565, y=330)
+
+            # make level go full and clear it to test
+            self.level.start()
+
+            self.health = tk.CTkProgressBar(self, width=250, height=15, progress_color="#2ecc71", mode="determinate", determinate_speed=0.2, orientation="horizontal")
+            self.health.place(x=200, y=370)
+
+            self.healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
+            self.healthlabel.place(x=160, y=362)
+
 
 
     def initiate_game(self):

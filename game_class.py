@@ -26,10 +26,6 @@ class Spiel:
                 print("Spieler besiegt")
                 self.stop()
 
-    def spielzug(self):
-        self.__spieler.ziehe()
-        self.__gegner.ziehe()
-
     def spielende(self):
         self.spielstand()
         print("Spielende")

@@ -1,3 +1,6 @@
+import random
+
+
 class Spieler:
     def __init__(self, name, class_type):
         self.__name = name
@@ -35,4 +38,7 @@ class Spieler:
 
     def set_level(self, level):
         self.__level = level
+
+    def get_damage(self):
+        return self.__atk - random.randint(1,3)
 
