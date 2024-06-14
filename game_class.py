@@ -9,7 +9,7 @@ class Spiel:
         self.__ui = window
         print(type(self.__ui))
         self.__spieler = Spieler(name, class_type, self.__ui)
-        self.__rounds = 0
+        self.__round = 0
         self.__location = "Auf dem Weg zum dunkel Wald"
 
     def spielstand(self):
@@ -18,7 +18,7 @@ class Spiel:
     def initate_fight(self):
         self.__gegner = Gegner()
 
-    def attack(self):
+    def fight(self):
         self.__gegner.set_leben(self.__gegner.get_leben() - self.__spieler.get_atk())
         if self.__gegner.get_leben() <= 0:
             self.__gegner.set_dead()
@@ -42,15 +42,14 @@ class Spiel:
             self.stop()
 
     def laufen(self):
-        self.__rounds += 1
-        self.start_next_round()
-        if self.__rounds == 5:
+        self.__round += 1
+        if self.__round == 5:
             self.__ui.print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.", 6000)
             self.set_location("The Dark Forest")
-        elif self.__rounds == 12:
+        elif self.__round == 12:
             self.__ui.print("Du befindest dich vor einem alten Schloss. Es ist verlassen und du siehst nur noch die Ruinen.", 6000)
             self.set_location("The Hounted Castle")
-        elif self.__rounds == 20:
+        elif self.__round == 20:
             self.__ui.print("Du befindest dich vor Malakars Turm. Ein finsterer Ort, an dem böse Mächte wirken.", 6000)
             self.set_location("Malakars Tower")
 
@@ -60,6 +59,7 @@ class Spiel:
             self.hounted_castle()
         elif self.__location == "Malakars Tower":
             self.malakars_tower()
+        self.start_next_round()
 
 
 
@@ -89,8 +89,6 @@ class Spiel:
             self.__ui.print("Ein Gegener greift aus dem Schatten an.", 4000)
             self.initate_fight()
             self.stealth_attack()
-
-
 
     def get_location(self):
         return self.__location

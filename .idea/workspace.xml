@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="Spiel Klasse neue Methoden">
+    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="keine ahnung">
+      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game_logic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_class.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,17 +51,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.mainui.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "Python.mainui.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MiniRPG\RPG\resources\sounds" />
+      <recent name="D:\MiniRPG\RPG\resources\materials" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="RPG" />
@@ -172,36 +183,98 @@
       <option name="project" value="LOCAL" />
       <updated>1718382860907</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Spiel Klasse neue Methoden">
+      <option name="closed" value="true" />
+      <created>1718384169782</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718384169782</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Spiel Klasse neue Methoden">
+      <option name="closed" value="true" />
+      <created>1718399045432</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718399045432</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Musik und Methoden zum abscpielen">
+      <option name="closed" value="true" />
+      <created>1718400321917</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1718400321917</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Musik und Methoden zum abscpielen">
+      <option name="closed" value="true" />
+      <created>1718401128525</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718401128525</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Musik und Methoden zum abscpielen">
+      <option name="closed" value="true" />
+      <created>1718401155475</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718401155475</updated>
+    </task>
+    <task id="LOCAL-00012" summary="keine ahnung">
+      <option name="closed" value="true" />
+      <created>1718402565883</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1718402565883</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test und so" />
     <MESSAGE value="Spiel Klasse neue Methoden" />
-    <option name="LAST_COMMIT_MESSAGE" value="Spiel Klasse neue Methoden" />
+    <MESSAGE value="Musik und Methoden zum abscpielen" />
+    <MESSAGE value="keine ahnung" />
+    <option name="LAST_COMMIT_MESSAGE" value="keine ahnung" />
   </component>
-  <component name="WfRunsListSearchHistory">{
-  &quot;history&quot;: [
+  <component name="WfRunsListSearchHistory"><![CDATA[{
+  "history": [
     {
-      &quot;branch&quot;: &quot;master&quot;,
-      &quot;currentBranchFilter&quot;: true
+      "branch": "master",
+      "currentBranchFilter": true
     },
     {
-      &quot;branch&quot;: &quot;master&quot;,
-      &quot;currentBranchFilter&quot;: true
+      "branch": "master",
+      "currentBranchFilter": true
     },
     {
-      &quot;branch&quot;: &quot;master&quot;,
-      &quot;currentBranchFilter&quot;: true
+      "branch": "master",
+      "currentBranchFilter": true
     },
     {
-      &quot;branch&quot;: &quot;master&quot;,
-      &quot;currentBranchFilter&quot;: true
+      "branch": "master",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "master",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "master",
+      "currentBranchFilter": true
+    },
+    {
+      "branch": "master",
+      "currentBranchFilter": true
     }
   ],
-  &quot;lastFilter&quot;: {
-    &quot;branch&quot;: &quot;master&quot;,
-    &quot;currentBranchFilter&quot;: true
+  "lastFilter": {
+    "branch": "master",
+    "currentBranchFilter": true
   }
-}</component>
+}]]></component>
 </project>

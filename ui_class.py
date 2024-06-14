@@ -3,6 +3,7 @@ from tkextrafont import Font
 import pygame
 from PIL import Image
 import main
+import game_class
 
 
 class App(tk.CTk):
@@ -103,7 +104,7 @@ class App(tk.CTk):
             self.__healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
             self.__healthlabel.place(x=160, y=362)
 
-            self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Test lololol ich hab keine AHnung was ich hier reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.", 5000))
+            self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Du bist ein hässliches stück scheiße ich muss eigentlich nur den Text von Angelo ersetzen aber was soll ich machen. HERE I AM ON THE ROAD AGAIN. HERE WE ARE NOW ENTERTAIN US.", 4000))
             self.__debugbutton.place(x=300, y=250)
 
             main.initiate_game(self.__name, self.__role, self)
