@@ -15,6 +15,7 @@ class App(tk.CTk):
                 "\n\n――――――――――――――――――――――――――――――――――――"
                 "\n\nDas Schicksal Eldorias liegt in deinen Händen. Wirst du es schaffen?")
 
+
     def __init__(self, ver: str):
         super().__init__()
         tk.set_default_color_theme("resources/theme/orange.json") # color setter
@@ -102,7 +103,7 @@ class App(tk.CTk):
             self.__healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
             self.__healthlabel.place(x=160, y=362)
 
-            main.initiate_game("test", self.__role)
+            main.initiate_game("test", self.__role, self)
 
     def update_health(self, health: float):
         self.__health.set(health)

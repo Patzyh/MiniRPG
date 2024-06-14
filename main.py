@@ -1,13 +1,14 @@
 import ui_class as ui
 from game_class import Spiel
+import time
 
-spiel = None
 
-
-def initiate_game(name, class_type):
-    global spiel
-    spiel = Spiel(name, class_type)
+def initiate_game(name, class_type, window):
+    spiel = Spiel(name, class_type, window)
     class_stats = [spiel.get_player().get_hp()]
+    time.sleep(1)
+    spiel.get_player().set_hp(17)
+
 
 
 def main():

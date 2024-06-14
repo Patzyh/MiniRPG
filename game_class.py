@@ -3,9 +3,11 @@ from enemy_class import Gegner
 
 
 class Spiel:
-    def __init__(self, name, class_type):
-        self.__spieler = Spieler(name, class_type)
+    def __init__(self, name, class_type, window):
         self.__punkte = 0
+        self.__ui = window
+        print(type(self.__ui))
+        self.__spieler = Spieler(name, class_type, self.__ui)
 
     def spielstand(self):
         print("Punkte: ", self.__punkte)
