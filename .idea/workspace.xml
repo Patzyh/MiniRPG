@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="classe app erweitert, basic methoden geupdatet + custom theme in orange">
-      <change beforePath="$PROJECT_DIR$/.idea/RPG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RPG.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9b8f6337-4358-44d9-8bf2-a20c797f891d" name="Changes" comment="keine ahnung, wenig auswahlsseite weiter gemacht">
+      <change afterPath="$PROJECT_DIR$/enemy_class.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game_class.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/player_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainui.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_class.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +42,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.main.executor": "Run",
     "Python.mainui.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -57,7 +61,7 @@
       <command value="pip install pillow" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.mainui">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="RPG" />
       <option name="ENV_FILES" value="" />
@@ -139,13 +143,33 @@
       <option name="project" value="LOCAL" />
       <updated>1718306924637</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="keine ahnung, wenig auswahlsseite weiter gemacht">
+      <option name="closed" value="true" />
+      <created>1718349537855</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718349537855</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test und so" />
     <MESSAGE value="classe app erweitert, basic methoden geupdatet + custom theme in orange" />
-    <option name="LAST_COMMIT_MESSAGE" value="classe app erweitert, basic methoden geupdatet + custom theme in orange" />
+    <MESSAGE value="keine ahnung, wenig auswahlsseite weiter gemacht" />
+    <option name="LAST_COMMIT_MESSAGE" value="keine ahnung, wenig auswahlsseite weiter gemacht" />
   </component>
 </project>

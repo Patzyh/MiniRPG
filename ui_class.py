@@ -71,7 +71,13 @@ class App(tk.CTk):
 
             self.button = tk.CTkButton(self, text="Zurück", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(1))
             self.button.place(x=10, y=360)
+        elif page == 3:
+            self.label = tk.CTkLabel(self, text="Placeholder", font=("Montserrat Black", 40))
+            self.label.pack(pady=10)
 
+
+    def initiate_game(self):
+        pass
     def selected_role(self, num):
         self.__role = ""
         if num == 1:
