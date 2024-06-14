@@ -106,7 +106,7 @@ class App(tk.CTk):
             self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Test lololol ich hab keine AHnung was ich hier reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.reinschreiben soll deshalb shchreibe ich so viel unsinn wie nur möglich.", 5000))
             self.__debugbutton.place(x=300, y=250)
 
-            main.initiate_game("test", self.__role, self)
+            main.initiate_game(self.__name, self.__role, self)
 
     def print(self, text, time):
         self.__infolabel = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s",
