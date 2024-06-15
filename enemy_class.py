@@ -1,11 +1,12 @@
 import random
 
+
 class Gegner:
     def __init__(self, enemytype=0):
         self.__leben = 100
         self.__enemytype = enemytype
         if self.__enemytype == 0:
-            self.__enemytype = random.randint(1,3)
+            self.__enemytype = random.randint(1, 3)
         self.__dead = False
 
         self.__enemy = [
@@ -17,20 +18,26 @@ class Gegner:
         self.__enemy = self.__enemy[self.__enemytype - 1]
         self.__name = self.__enemy["name"]
 
-    def get_dead(self):
+    @property
+    def dead(self):
         return self.__dead
 
-    def get_leben(self):
+    @dead.setter
+    def dead(self, dead):
+        self.__dead = dead
+
+    @property
+    def leben(self):
         return self.__leben
 
-    def get_name(self):
-        return self.__name
-
-    def set_dead(self):
-        self.__dead = True
-
-    def set_leben(self, leben):
+    @leben.setter
+    def leben(self, leben):
         self.__leben = leben
 
-    def set_name(self, name):
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
         self.__name = name
