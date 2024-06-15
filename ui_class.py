@@ -25,11 +25,29 @@ class App(tk.CTk):
         self.__fighter = tk.CTkImage(dark_image=Image.open("resources/materials/sword.png"), size=(100, 100))
         self.__archer = tk.CTkImage(dark_image=Image.open("resources/materials/bow-and-arrow.png"), size=(100, 100))
         self.__mage = tk.CTkImage(dark_image=Image.open("resources/materials/magic-wand.png"), size=(100, 100))
+        self.__kevin = tk.CTkImage(dark_image=Image.open("resources/materials/Kevinxmarkus.png"), size=(800, 400))
+
+        self.__gamelogic = None
 
         Font(file="resources/fonts/Montserrat-VariableFont_wght.ttf") # font setter
         self.sizeto(600, 400)
         self.title("REALM OF SHADOWS - RPG - " + ver)
         self.page_select(0)
+        self.__konami_code = ['Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'b', 'a']
+        self.__key_presses = []
+
+        self.bind('<KeyPress>', self.check_konami_code)
+
+    def check_konami_code(self, event):
+        if event.keysym == self.__konami_code[len(self.__key_presses)]:
+            self.__key_presses.append(event.keysym)
+            if self.__key_presses == self.__konami_code:
+                self.__kevin_label = tk.CTkLabel(self, image=self.__kevin, text="")
+                self.__kevin_label.place(x=0, y=0)
+                self.after(5000, self.__kevin_label.destroy)
+                self.__key_presses = []
+        else:
+            self.__key_presses = []
 
     def page_select(self, page):
         self.clear_site()
@@ -104,10 +122,39 @@ class App(tk.CTk):
             self.__healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
             self.__healthlabel.place(x=160, y=362)
 
-            self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Du bist ein hässliches stück scheiße ich muss eigentlich nur den Text von Angelo ersetzen aber was soll ich machen. HERE I AM ON THE ROAD AGAIN. HERE WE ARE NOW ENTERTAIN US.", 4000))
-            self.__debugbutton.place(x=300, y=250)
+            # self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Du bist ein hässliches stück scheiße ich muss eigentlich nur den Text von Angelo ersetzen aber was soll ich machen. HERE I AM ON THE ROAD AGAIN. HERE WE ARE NOW ENTERTAIN US.", 4000))
+            # self.__debugbutton.place(x=300, y=250)
+
+            self.__move = tk.CTkButton(self, text="Weiter", font=("Montserrat Black", 20, "bold"), command=self.move)
+            self.__move.pack(pady=10, side="bottom")
+
+
 
             main.initiate_game(self.__name, self.__role, self)
+
+
+    def create_enemybar(self):
+        self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
+        self.__enemyhealth.place(x=200, y=370)
+
+        self.__enemyhealth.set(1)
+
+        self.__enemyhealthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
+        self.__enemyhealthlabel.place(x=160, y=362)
+
+    def update_enemybar(self, health: float):
+        self.__enemyhealth.set(health)
+
+    def remove_enemybar(self):
+        self.__enemyhealth.destroy()
+        self.__enemyhealthlabel.destroy()
+
+    def get_gamelogic(self, gamelogic):
+        self.__gamelogic = gamelogic
+
+    def move(self):
+        if self.__gamelogic is not None:
+            self.__gamelogic.laufen()
 
     def print(self, text, time):
         self.__infolabel = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s",

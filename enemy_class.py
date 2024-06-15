@@ -2,12 +2,12 @@ import random
 
 
 class Gegner:
-    def __init__(self, enemytype=0):
-        self.__leben = 100
+    def __init__(self, enemytype=0, window=None):
         self.__enemytype = enemytype
         if self.__enemytype == 0:
             self.__enemytype = random.randint(1, 3)
         self.__dead = False
+        self.__ui = window
 
         self.__enemy = [
             {"name": "Orc", "angriff": 14, "leben": 17},
@@ -17,6 +17,10 @@ class Gegner:
 
         self.__enemy = self.__enemy[self.__enemytype - 1]
         self.__name = self.__enemy["name"]
+        self.__leben = self.__enemy["leben"]
+        self.__maxhealth = self.__enemy["leben"]
+
+        self.__ui.create_enemybar(self)
 
     @property
     def dead(self):
@@ -25,14 +29,18 @@ class Gegner:
     @dead.setter
     def dead(self, dead):
         self.__dead = dead
+        self.__ui.remove_enemybar(self)
 
     @property
     def leben(self):
         return self.__leben
 
     @leben.setter
-    def leben(self, leben):
-        self.__leben = leben
+    def leben(self, hp):
+        if hp > self.__maxhealth:
+            hp = self.__maxhealth
+        self.__leben = hp
+        self.__ui.update_health(hp / self.__maxhealth)
 
     @property
     def name(self):

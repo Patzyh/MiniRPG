@@ -53,5 +53,4 @@ class GameLogic:
             self.stop()
 
     def spielablauf(self):
-        while True:
-           pass
+       pass
