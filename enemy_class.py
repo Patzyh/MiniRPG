@@ -49,3 +49,11 @@ class Gegner:
     @name.setter
     def name(self, name):
         self.__name = name
+
+    @property
+    def atk(self):
+        return self.__enemy["angriff"]
+
+    @atk.setter
+    def atk(self, atk):
+        self.__enemy["angriff"] = atk

@@ -3,7 +3,6 @@ from tkextrafont import Font
 import pygame
 from PIL import Image
 import main
-import game_class
 
 
 class App(tk.CTk):
@@ -27,7 +26,7 @@ class App(tk.CTk):
         self.__mage = tk.CTkImage(dark_image=Image.open("resources/materials/magic-wand.png"), size=(100, 100))
         self.__kevin = tk.CTkImage(dark_image=Image.open("resources/materials/Kevinxmarkus.png"), size=(800, 400))
 
-        self.__gamelogic = None
+        self.__game_class = None
 
         Font(file="resources/fonts/Montserrat-VariableFont_wght.ttf") # font setter
         self.sizeto(600, 400)
@@ -149,12 +148,12 @@ class App(tk.CTk):
         self.__enemyhealth.destroy()
         self.__enemyhealthlabel.destroy()
 
-    def get_gamelogic(self, gamelogic):
-        self.__gamelogic = gamelogic
+    def get_game_class(self, gameclass):
+        self.__game_class = gameclass
 
     def move(self):
-        if self.__gamelogic is not None:
-            self.__gamelogic.laufen()
+        if self.__game_class is not None:
+            self.__game_class.laufen()
 
     def print(self, text, time):
         self.__infolabel = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s",

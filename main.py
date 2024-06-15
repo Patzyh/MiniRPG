@@ -1,15 +1,11 @@
 import ui_class as ui
-from game_class import Spiel
-from game_logic import GameLogic
-import game_logic as logic
+from game_logic import Spiel
 import time
 
 
 def initiate_game(name, class_type, window):
     spiel = Spiel(name, class_type, window)
-    game_logic = GameLogic(window)
-    game_logic.spielablauf()
-    window.get_gamelogic(game_logic)
+    window.get_game_class(spiel)
 
 
 def main():

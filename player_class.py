@@ -48,3 +48,4 @@ class Spieler:
     def get_damage(self):
         return self.__atk - random.randint(1,3)
 
+
