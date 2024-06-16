@@ -187,7 +187,7 @@ class App(tk.CTk):
     def print(self, text, time):
         self.__infolabel = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s",
                                        wraplength=400)
-        self.__infolabel.pack(pady=50, padx=50, side="bottom")
+        self.__infolabel.pack(pady=0, padx=50, side="bottom")
         self.after(time, self.__infolabel.destroy)
 
     def play_title_music(self):
