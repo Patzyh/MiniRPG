@@ -15,11 +15,9 @@ class Spiel:
 
         self.__current_attacker = None
 
-
     def initate_fight(self, first_attack):
         self.__ui.print("Ein Gegner greift dich an.", 4000)
         self.__gegner = Gegner(0, window=self.__ui)
-        print(self.__gegner)
         self.__current_attacker = first_attack
 
     def next_attack(self):
@@ -30,14 +28,17 @@ class Spiel:
 
         print(self.__current_attacker)
         if self.__current_attacker == "enemy":
-            self.__spieler.set_hp(self.__spieler.get_hp() - self.__gegner.atk)
+            damage = self.__gegner.atk
+            self.__spieler.set_hp(self.__spieler.get_hp() - damage)
+            self.__ui.print("Du hast " + str(damage) + " Schaden genommen.", 4000)
             if self.__spieler.get_hp() <= 0:
                 self.__ui.print("-1000 Aura", 4000)
                 self.stopfight(False)
             self.__current_attacker = "player"
         else:
-            self.__gegner.leben = self.__gegner.leben - self.__spieler.get_damage()
-            print(self.__gegner.leben, "gegner leben")
+            damage = self.__spieler.get_damage()
+            self.__gegner.leben = self.__gegner.leben - damage
+            self.__ui.print("Du hast " + str(self.__spieler.get_damage()) + " Schaden gemacht.", 4000)
             if self.__gegner.leben <= 0:
                 self.__ui.print("+ 1000 Aura", 4000)
                 self.stopfight(True)
@@ -79,7 +80,6 @@ class Spiel:
         if stealth == 1:
             self.__ui.print("Ein Gegener greift aus dem Schatten an.", 4000)
             self.initate_fight("enemy")
-            self.stealth_attack()
 
     def laufen(self):
         if self.__gegner and not self.__gegner.dead:
@@ -91,12 +91,6 @@ class Spiel:
             self.__round = self.__round + 1
             self.update_location()
             self.start_next_round()
-
-    def stealth_attack(self):
-        self.__spieler.set_hp(self.__spieler.get_hp() - self.__gegner.atk)
-        if self.__spieler.get_hp() <= 0:
-            self.__ui.print("Spieler besiegt", 4000)
-            self.stop()
 
     def update_location(self):
         if self.__round == 5:
@@ -116,8 +110,7 @@ class Spiel:
         self.__ui.print("Du hast das Spiel beendet.", 4000)
         self.__ui.print("Du hast " + str(self.__punkte) + " Punkte erreicht.", 4000)
         self.__ui.print("Das Spiel wird beendet.", 4000)
-        time.sleep(4)
-        self.__ui.quit()
+        self.__ui.after(4000, self.__ui.quit())
 
     # Getter and Setter for punkte
     @property
