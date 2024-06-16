@@ -5,7 +5,8 @@ import time
 
 def initiate_game(name, class_type, window):
     spiel = Spiel(name, class_type, window)
-    window.get_game_class(spiel)
+    window.get_gamelogic(spiel)
+    window.get_player(spiel.spieler)
 
 
 def main():

@@ -25,7 +25,10 @@ class App(tk.CTk):
         self.__archer = tk.CTkImage(dark_image=Image.open("resources/materials/bow-and-arrow.png"), size=(100, 100))
         self.__mage = tk.CTkImage(dark_image=Image.open("resources/materials/magic-wand.png"), size=(100, 100))
         self.__kevin = tk.CTkImage(dark_image=Image.open("resources/materials/Kevinxmarkus.png"), size=(800, 400))
+        self.__healpot = tk.CTkImage(dark_image=Image.open("resources/materials/healpot.png"), size=(50, 50))
+        self.__healpot_gray = tk.CTkImage(dark_image=Image.open("resources/materials/healpot_gray.png"), size=(50, 50))
 
+        self.__player = None
         self.__game_class = None
 
         Font(file="resources/fonts/Montserrat-VariableFont_wght.ttf") # font setter
@@ -114,23 +117,49 @@ class App(tk.CTk):
             self.__level.set(0)
 
             self.__health = tk.CTkProgressBar(self, width=250, height=15, progress_color="#2ecc71", mode="determinate", determinate_speed=0.2, orientation="horizontal")
-            self.__health.place(x=200, y=370)
+            self.__health.place(x=180, y=370)
 
             self.__health.set(1)
 
             self.__healthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
-            self.__healthlabel.place(x=160, y=362)
+            self.__healthlabel.place(x=140, y=362)
 
             # self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Du bist ein hässliches stück scheiße ich muss eigentlich nur den Text von Angelo ersetzen aber was soll ich machen. HERE I AM ON THE ROAD AGAIN. HERE WE ARE NOW ENTERTAIN US.", 4000))
             # self.__debugbutton.place(x=300, y=250)
 
             self.__move = tk.CTkButton(self, text="Weiter", font=("Montserrat Black", 20, "bold"), command=self.move)
-            self.__move.pack(pady=10, side="bottom")
+            self.__move.pack(pady=50, side="bottom")
 
+            self.__healpot_1 = tk.CTkButton(self, image=self.__healpot, text="", bg_color="transparent", command=lambda: self.use_healpot(1), width=20, height=20, fg_color="transparent", hover_color=("#ff0000", "#424242"))
+            self.__healpot_1.place(x=10, y=100)
+
+            self.__healpot_2 = tk.CTkButton(self, image=self.__healpot, text="", bg_color="transparent", command=lambda: self.use_healpot(2), width=20, height=20, fg_color="transparent", hover_color=("#ff0000", "#424242"))
+            self.__healpot_2.place(x=10, y=160)
+
+            self.__healpot_3 = tk.CTkButton(self, image=self.__healpot, text="", bg_color="transparent", command=lambda: self.use_healpot(3), width=20, height=20, fg_color="transparent", hover_color=("#ff0000", "#424242"))
+            self.__healpot_3.place(x=10, y=220)
 
 
             main.initiate_game(self.__name, self.__role, self)
 
+
+    def get_player(self, player):
+        self.__player = player
+
+    def use_healpot(self, id):
+        print(self.print(self.__player, 1000))
+        if self.__player is not None:
+            self.__player.set_hp(999)
+
+            if id == 1:
+                # make the button grey and not clickable
+                self.__healpot_1.configure(state="disabled", image=self.__healpot_gray)
+            elif id == 2:
+                # make the button grey and not clickable
+                self.__healpot_2.configure(state="disabled", image=self.__healpot_gray)
+            elif id == 3:
+                # make the button grey and not clickable
+                self.__healpot_3.configure(state="disabled", image=self.__healpot_gray)
 
     def create_enemybar(self):
         self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
@@ -148,8 +177,8 @@ class App(tk.CTk):
         self.__enemyhealth.destroy()
         self.__enemyhealthlabel.destroy()
 
-    def get_game_class(self, gameclass):
-        self.__game_class = gameclass
+    def get_gamelogic(self, gamelogic):
+        self.__gamelogic = gamelogic
 
     def move(self):
         if self.__game_class is not None:
