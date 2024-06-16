@@ -17,6 +17,8 @@ class Spieler:
             self.__maxhealth = class_types[class_type]["health"]
             self.__atk = class_types[class_type]["atk"]
 
+        self.__health, self.__maxhealth = 100, 100
+
     def get_name(self):
         return self.__name
 
@@ -46,6 +48,8 @@ class Spieler:
         self.__ui.update_level(level)
 
     def get_damage(self):
-        return self.__atk - random.randint(1,3)
+        damage = self.__atk - random.randint(1,3)
+        print(damage, "damage dealt")
+        return damage
 
 

@@ -29,7 +29,7 @@ class App(tk.CTk):
         self.__healpot_gray = tk.CTkImage(dark_image=Image.open("resources/materials/healpot_gray.png"), size=(50, 50))
 
         self.__player = None
-        self.__game_class = None
+        self.__game_logic = None
 
         Font(file="resources/fonts/Montserrat-VariableFont_wght.ttf") # font setter
         self.sizeto(600, 400)
@@ -128,7 +128,7 @@ class App(tk.CTk):
             # self.__debugbutton.place(x=300, y=250)
 
             self.__move = tk.CTkButton(self, text="Weiter", font=("Montserrat Black", 20, "bold"), command=self.move)
-            self.__move.pack(pady=50, side="bottom")
+            self.__move.pack(pady=(10, 50), side="bottom")
 
             self.__healpot_1 = tk.CTkButton(self, image=self.__healpot, text="", bg_color="transparent", command=lambda: self.use_healpot(1), width=20, height=20, fg_color="transparent", hover_color=("#ff0000", "#424242"))
             self.__healpot_1.place(x=10, y=100)
@@ -147,7 +147,7 @@ class App(tk.CTk):
         self.__player = player
 
     def use_healpot(self, id):
-        print(self.print(self.__player, 1000))
+        print(self.print("Du hast einen Heiltrank benutzt.", 2000))
         if self.__player is not None:
             self.__player.set_hp(999)
 
@@ -161,14 +161,17 @@ class App(tk.CTk):
                 # make the button grey and not clickable
                 self.__healpot_3.configure(state="disabled", image=self.__healpot_gray)
 
-    def create_enemybar(self):
+    def create_enemybar(self, enemy):
         self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
-        self.__enemyhealth.place(x=200, y=370)
+        self.__enemyhealth.place(x=180, y=20)
+
+        self.__enemylabel = tk.CTkLabel(self, text=enemy.name, font=("Montserrat Black", 20), bg_color="transparent")
+        self.__enemylabel.pack(pady=(40, 0), padx=0)
 
         self.__enemyhealth.set(1)
 
         self.__enemyhealthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
-        self.__enemyhealthlabel.place(x=160, y=362)
+        self.__enemyhealthlabel.place(x=140, y=12)
 
     def update_enemybar(self, health: float):
         self.__enemyhealth.set(health)
@@ -176,13 +179,16 @@ class App(tk.CTk):
     def remove_enemybar(self):
         self.__enemyhealth.destroy()
         self.__enemyhealthlabel.destroy()
+        self.__enemylabel.destroy()
 
     def get_gamelogic(self, gamelogic):
-        self.__gamelogic = gamelogic
+        self.__game_logic = gamelogic
 
     def move(self):
-        if self.__game_class is not None:
-            self.__game_class.laufen()
+        print(self.__game_logic)
+
+        if self.__game_logic is not None:
+            self.__game_logic.laufen()
 
     def print(self, text, time):
         self.__infolabel = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s",

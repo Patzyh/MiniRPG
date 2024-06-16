@@ -29,7 +29,7 @@ class Gegner:
     @dead.setter
     def dead(self, dead):
         self.__dead = dead
-        self.__ui.remove_enemybar(self)
+        self.__ui.remove_enemybar()
 
     @property
     def leben(self):
@@ -37,10 +37,11 @@ class Gegner:
 
     @leben.setter
     def leben(self, hp):
+        print(hp, "hp")
         if hp > self.__maxhealth:
             hp = self.__maxhealth
         self.__leben = hp
-        self.__ui.update_health(hp / self.__maxhealth)
+        self.__ui.update_enemybar(hp / self.__maxhealth)
 
     @property
     def name(self):
