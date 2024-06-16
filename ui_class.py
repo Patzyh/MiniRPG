@@ -16,7 +16,6 @@ class App(tk.CTk):
                 "\n\n――――――――――――――――――――――――――――――――――――"
                 "\n\nDas Schicksal Eldorias liegt in deinen Händen. Wirst du es schaffen?")
 
-
     def __init__(self, ver: str):
         super().__init__()
         tk.set_default_color_theme("resources/theme/orange.json") # color setter
@@ -38,7 +37,17 @@ class App(tk.CTk):
         self.__konami_code = ['Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'b', 'a']
         self.__key_presses = []
 
+        self.__points = 0
+
         self.bind('<KeyPress>', self.check_konami_code)
+
+        self.__labels = []
+
+        self.__class_types = {
+            "Kämpfer": {"health": 70, "atk": 14},
+            "Bogenschütze": {"health": 60, "atk": 17},
+            "Magier": {"health": 50, "atk": 20}
+        }
 
     def check_konami_code(self, event):
         if event.keysym == self.__konami_code[len(self.__key_presses)]:
@@ -94,6 +103,10 @@ class App(tk.CTk):
             self.__description = tk.CTkLabel(self,
                                            text="Du hast die Rolle"
                                                 " " + self.__role + " ausgewählt."
+                                                                    
+                                                "Deine Stats sind:"
+                                                "\n\nLeben: " + str(self.__class_types[self.__role]["health"]) + " Leben"
+                                                "\nAngriff: " + str(self.__class_types[self.__role]["atk"]) + " Angriff"
                                                 "\n\n――――――――――――――――――――――――――――――――――――"
                                                 "\n\nBist du dir mit dieser Rolle sicher?",
                                            font=("Montserrat", 15), justify="center", anchor="n", wraplength=600)
@@ -105,16 +118,15 @@ class App(tk.CTk):
             self.__button = tk.CTkButton(self, text="Zurück", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(2))
             self.__button.place(x=10, y=360)
         elif page == 4:
-            self.__level = tk.CTkProgressBar(self, width=15, height=250, orientation="vertical", progress_color="#3498db", mode="determinate", determinate_speed=0.2)
-            self.__level.place(x=565, y=75)
+            self.__progressBar = tk.CTkProgressBar(self, width=15, height=250, orientation="vertical",
+                                                   progress_color="#3498db", mode="determinate", determinate_speed=0.2)
+            self.__progressBar.place(x=565, y=75)
 
-            self.__levellabel = tk.CTkLabel(self, text="XP", font=("Montserrat Black", 20), bg_color="transparent")
-            self.__levellabel.place(x=557, y=45)
+            self.__progressPoints = tk.CTkLabel(self, text=str(self.__points), font=("Montserrat Black", 20), bg_color="transparent",
+                                                anchor="center")
+            self.__progressPoints.place(x=565, y=330)
 
-            self.__levelnum = tk.CTkLabel(self, text="10", font=("Montserrat Black", 20), bg_color="transparent", anchor="center")
-            self.__levelnum.place(x=565, y=330)
-
-            self.__level.set(0)
+            self.__progressBar.set(0)
 
             self.__health = tk.CTkProgressBar(self, width=250, height=15, progress_color="#2ecc71", mode="determinate", determinate_speed=0.2, orientation="horizontal")
             self.__health.place(x=180, y=370)
@@ -185,16 +197,29 @@ class App(tk.CTk):
         self.__game_logic = gamelogic
 
     def move(self):
-        print(self.__game_logic)
-
         if self.__game_logic is not None:
             self.__game_logic.laufen()
 
+            self.__points = self.__game_logic.round
+            self.__progressPoints.configure(text=self.__points)
+            self.update_progress(self.__points / 20)
+
+    def update_progress(self, progress: float):
+        self.__progressBar.set(progress)
+
     def print(self, text, time):
-        self.__infolabel = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s",
-                                       wraplength=400)
-        self.__infolabel.pack(pady=0, padx=50, side="bottom")
-        self.after(time, self.__infolabel.destroy)
+        # Create a new label
+        new_label = tk.CTkLabel(self, text=text, font=("Montserrat", 15), justify="center", anchor="s", wraplength=400)
+        new_label.pack(pady=0, padx=50, side="bottom")
+        self.after(time, new_label.destroy)
+
+        # If there are already 4 labels, destroy the oldest one
+        if len(self.__labels) == 2:
+            oldest_label = self.__labels.pop(0)
+            oldest_label.destroy()
+
+        # Add the new label to the list of labels
+        self.__labels.append(new_label)
 
     def play_title_music(self):
         pygame.mixer.init()
@@ -228,9 +253,6 @@ class App(tk.CTk):
         elif num == 3:
             self.__role = "Magier"
         self.page_select(3)
-
-    def on_button_click(self):
-        self.__label.configure(text="Button clicked!")
 
     def clear_site(self):
         for widget in self.winfo_children():

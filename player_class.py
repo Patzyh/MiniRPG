@@ -6,18 +6,18 @@ class Spieler:
         self.__name = name
         self.__level = 0
         self.__ui = window
-        class_types = {
-            "Kämpfer": {"health": 19, "atk": 14},
-            "Bogenschütze": {"health": 17, "atk": 17},
-            "Magier": {"health": 15, "atk": 20}
+        self.__class_types = {
+            "Kämpfer": {"health": 70, "atk": 14},
+            "Bogenschütze": {"health": 60, "atk": 17},
+            "Magier": {"health": 50, "atk": 20}
         }
 
-        if class_type in class_types:
-            self.__health = class_types[class_type]["health"]
-            self.__maxhealth = class_types[class_type]["health"]
-            self.__atk = class_types[class_type]["atk"]
+        if class_type in self.__class_types:
+            self.__health = self.__class_types[class_type]["health"]
+            self.__maxhealth = self.__class_types[class_type]["health"]
+            self.__atk = self.__class_types[class_type]["atk"]
 
-        self.__health, self.__maxhealth = 100, 100
+        # self.__health, self.__maxhealth = 100, 100
 
     def get_name(self):
         return self.__name

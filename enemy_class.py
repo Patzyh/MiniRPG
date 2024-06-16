@@ -37,7 +37,6 @@ class Gegner:
 
     @leben.setter
     def leben(self, hp):
-        print(hp, "hp")
         if hp > self.__maxhealth:
             hp = self.__maxhealth
         self.__leben = hp
