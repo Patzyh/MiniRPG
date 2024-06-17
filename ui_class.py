@@ -27,6 +27,10 @@ class App(tk.CTk):
         self.__healpot = tk.CTkImage(dark_image=Image.open("resources/materials/healpot.png"), size=(50, 50))
         self.__healpot_gray = tk.CTkImage(dark_image=Image.open("resources/materials/healpot_gray.png"), size=(50, 50))
 
+        self.__orc = tk.CTkImage(dark_image=Image.open("resources/materials/orc.png"), size=(30, 30))
+        self.__goblin = tk.CTkImage(dark_image=Image.open("resources/materials/goblin.png"), size=(30, 30))
+        self.__geist = tk.CTkImage(dark_image=Image.open("resources/materials/geist.png"), size=(30, 30))
+
         self.__player = None
         self.__game_logic = None
 
@@ -156,6 +160,37 @@ class App(tk.CTk):
 
             main.initiate_game(self.__name, self.__role, self)
 
+        elif page == 5:
+
+            # lose page
+            self.__label = tk.CTkLabel(self, text="GAME OVER", font=("Montserrat Black", 40))
+            self.__label.pack(pady=10)
+
+            self.__description = tk.CTkLabel(self, text="Du hast verloren. Möchtest du es nochmal versuchen?", font=("Montserrat", 15), justify="center", anchor="n", wraplength=600)
+            self.__description.pack(pady=50, padx=0)
+
+            self.__button = tk.CTkButton(self, text="Neustart", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
+            self.__button.pack(pady=5, padx=5, side="bottom", anchor="e")
+
+            self.__button = tk.CTkButton(self, text="Beenden", font=("Montserrat Black", 20, "bold"), command=self.quit)
+            self.__button.place(x=10, y=360)
+
+        elif page == 6:
+
+                # win page
+                self.__label = tk.CTkLabel(self, text="GEWONNEN", font=("Montserrat Black", 40))
+                self.__label.pack(pady=10)
+
+                self.__description = tk.CTkLabel(self, text="Du hast gewonnen. Möchtest du es nochmal versuchen?", font=("Montserrat", 15), justify="center", anchor="n", wraplength=600)
+                self.__description.pack(pady=50, padx=0)
+
+                self.__button = tk.CTkButton(self, text="Neustart", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
+                self.__button.pack(pady=5, padx=5, side="bottom", anchor="e")
+
+                self.__button = tk.CTkButton(self, text="Beenden", font=("Montserrat Black", 20, "bold"), command=self.quit)
+                self.__button.place(x=10, y=360)
+
+
 
     def get_player(self, player):
         self.__player = player
@@ -179,6 +214,19 @@ class App(tk.CTk):
         self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
         self.__enemyhealth.place(x=180, y=37)
 
+        if enemy.name == "Orc":
+            self.__enemyhealth.configure(progress_color="#e74c3c")
+            self.__enemypic = tk.CTkLabel(self, image=self.__orc, text="")
+            self.__enemypic.place(x=440, y=27)
+        elif enemy.name == "Goblin":
+            self.__enemyhealth.configure(progress_color="#f1c40f")
+            self.__enemypic = tk.CTkLabel(self, image=self.__goblin, text="")
+            self.__enemypic.place(x=440, y=27)
+        elif enemy.name == "Geist":
+            self.__enemyhealth.configure(progress_color="#3498db")
+            self.__enemypic = tk.CTkLabel(self, image=self.__geist, text="")
+            self.__enemypic.place(x=440, y=27)
+
         self.__enemylabel = tk.CTkLabel(self, text=enemy.name, font=("Montserrat Black", 20), bg_color="transparent")
         self.__enemylabel.pack(pady=(21, 0), padx=0)
 
@@ -194,6 +242,7 @@ class App(tk.CTk):
         self.__enemyhealth.destroy()
         self.__enemyhealthlabel.destroy()
         self.__enemylabel.destroy()
+        self.__enemypic.destroy()
 
     def get_gamelogic(self, gamelogic):
         self.__game_logic = gamelogic
@@ -203,8 +252,9 @@ class App(tk.CTk):
             self.__game_logic.laufen()
 
             self.__points = self.__game_logic.round
-            self.__progressPoints.configure(text=self.__points)
-            self.update_progress(self.__points / 20)
+            if self.__progressPoints.winfo_exists():  # Check if the widget still exists
+                self.__progressPoints.configure(text=self.__points)
+                self.update_progress(self.__points / 20)
 
     def update_progress(self, progress: float):
         self.__progressBar.set(progress)

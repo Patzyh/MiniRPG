@@ -16,7 +16,5 @@ def main():
     window.after(1000, window.play_title_music) # Play title music78765678
     window.mainloop()
 
-print(__name__)
-
 if __name__ == "__main__":
     main()

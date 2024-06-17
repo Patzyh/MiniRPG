@@ -1,6 +1,5 @@
 import random
 
-
 class Gegner:
     def __init__(self, enemytype=0, window=None):
         self.__enemytype = enemytype

@@ -15,6 +15,7 @@ class Spiel:
 
         self.__current_attacker = None
 
+
     def initate_fight(self, first_attack):
         self.__ui.print("Ein Gegner greift dich an.", 4000)
         self.__gegner = Gegner(0, window=self.__ui)
@@ -107,10 +108,7 @@ class Spiel:
             # ui current location update
 
     def stop_game(self):
-        self.__ui.print("Du hast das Spiel beendet.", 4000)
-        self.__ui.print("Du hast " + str(self.__punkte) + " Punkte erreicht.", 4000)
-        self.__ui.print("Das Spiel wird beendet.", 4000)
-        self.__ui.quit()
+        self.__ui.page_select(5)
 
     # Getter and Setter for punkte
     @property

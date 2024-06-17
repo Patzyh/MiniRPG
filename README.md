@@ -20,8 +20,8 @@
 - [ ] EndBoss Malakar erstellen
   - Nach 20 Runden, kann man den richtigen Raum nach so 1 - 10 weitere Runden finden
   - Malakar hat 70 HP
-- [ ] Bilder einfügen
-- [ ] Tod fixxen
+- [x] Bilder einfügen
+- [x] Tod fixxen
 - [x] Musik
   - Ingame Musik
 - [ ] Position anzeigen
