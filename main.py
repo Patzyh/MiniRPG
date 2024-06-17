@@ -10,7 +10,7 @@ def initiate_game(name, class_type, window):
 
 
 def main():
-    window = ui.App("v0.0.13 INDEV")
+    window = ui.App("v0.1.2 INDEV")
     window.after(1000, window.play_title_music) # Play title music78765678
     window.mainloop()
 
