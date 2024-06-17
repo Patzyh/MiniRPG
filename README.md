@@ -24,6 +24,6 @@
 - [x] Tod fixxen
 - [x] Musik
   - Ingame Musik
-- [ ] Position anzeigen
+- [x] Position anzeigen
   - irgendwie auch die gegner dahingegen anpassen, dass die dann mehr damage machen und so idk, kann tarek machen
 - [ ] Credits
