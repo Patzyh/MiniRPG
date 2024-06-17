@@ -48,9 +48,9 @@ class App(tk.CTk):
         self.__labels = []
 
         self.__class_types = {
-            "Kämpfer": {"health": 60, "atk": 14},
-            "Bogenschütze": {"health": 50, "atk": 17},
-            "Magier": {"health": 40, "atk": 20}
+            "Kämpfer": {"health": 70, "atk": 14},
+            "Bogenschütze": {"health": 60, "atk": 17},
+            "Magier": {"health": 50, "atk": 20}
         }
 
     def check_konami_code(self, event):
@@ -155,7 +155,7 @@ class App(tk.CTk):
             self.__healpot_3 = tk.CTkButton(self, image=self.__healpot, text="", bg_color="transparent", command=lambda: self.use_healpot(3), width=20, height=20, fg_color="transparent", hover_color=("#ff0000", "#424242"))
             self.__healpot_3.place(x=10, y=220)
 
-            self.location_label = tk.CTkLabel(self, text="Auf dem Weg zum Schloss", font=("Montserrat", 20), bg_color="transparent")
+            self.location_label = tk.CTkLabel(self, text="", font=("Montserrat", 20), bg_color="transparent")
             self.location_label.pack(pady=(5, 0), padx=0)
 
             main.initiate_game(self.__name, self.__role, self)
@@ -210,6 +210,8 @@ class App(tk.CTk):
                 # make the button grey and not clickable
                 self.__healpot_3.configure(state="disabled", image=self.__healpot_gray)
 
+    def update_location(self, location):
+        self.location_label.configure(text=location)
     def create_enemybar(self, enemy):
         self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
         self.__enemyhealth.place(x=180, y=37)

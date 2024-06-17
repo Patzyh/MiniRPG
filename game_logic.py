@@ -94,6 +94,10 @@ class Spiel:
             self.start_next_round()
 
     def update_location(self):
+        if self.__location == "The Dark Forest":
+            self.__location = "Auf dem Weg zum Hounted Castle"
+        elif self.__location == "Hounted Castle":
+            self.__location = "Auf dem Weg zum Turm von Malakar"
         if self.__round == 5:
             self.__ui.print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.", 6000)
             self.__location = "The Dark Forest"
@@ -105,6 +109,7 @@ class Spiel:
         elif self.__round == 20:
             self.__ui.print("Du befindest dich vor Malakars Turm. Ein finsterer Ort, an dem böse Mächte wirken.", 6000)
             self.__location = "Malakars dark Tower"
+        self.__ui.update_location(self.__location)
             # ui current location update
 
     def stop_game(self):
