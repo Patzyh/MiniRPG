@@ -4,6 +4,7 @@ import random
 class Spieler:
     def __init__(self, name, class_type, window):
         self.__name = name
+        self.__class_type = class_type
         self.__level = 0
         self.__ui = window
         self.__class_types = {
@@ -30,6 +31,10 @@ class Spieler:
 
     def get_level(self):
         return self.__level
+
+    def get_class(self):
+        return self.__class_type
+
 
     def set_name(self, name):
         self.__name = name

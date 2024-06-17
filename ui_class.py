@@ -151,6 +151,8 @@ class App(tk.CTk):
             self.__healpot_3 = tk.CTkButton(self, image=self.__healpot, text="", bg_color="transparent", command=lambda: self.use_healpot(3), width=20, height=20, fg_color="transparent", hover_color=("#ff0000", "#424242"))
             self.__healpot_3.place(x=10, y=220)
 
+            self.location_label = tk.CTkLabel(self, text="Auf dem Weg zum Schloss", font=("Montserrat", 20), bg_color="transparent")
+            self.location_label.pack(pady=(5, 0), padx=0)
 
             main.initiate_game(self.__name, self.__role, self)
 
@@ -175,15 +177,15 @@ class App(tk.CTk):
 
     def create_enemybar(self, enemy):
         self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
-        self.__enemyhealth.place(x=180, y=20)
+        self.__enemyhealth.place(x=180, y=37)
 
         self.__enemylabel = tk.CTkLabel(self, text=enemy.name, font=("Montserrat Black", 20), bg_color="transparent")
-        self.__enemylabel.pack(pady=(40, 0), padx=0)
+        self.__enemylabel.pack(pady=(21, 0), padx=0)
 
         self.__enemyhealth.set(1)
 
         self.__enemyhealthlabel = tk.CTkLabel(self, text="HP", font=("Montserrat Black", 20), bg_color="transparent")
-        self.__enemyhealthlabel.place(x=140, y=12)
+        self.__enemyhealthlabel.place(x=140, y=29)
 
     def update_enemybar(self, health: float):
         self.__enemyhealth.set(health)

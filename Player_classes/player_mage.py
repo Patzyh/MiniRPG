@@ -1,28 +1,28 @@
 class Mage:
     def __init__(self, name, lvl, hp, atk, df):
-        self.name = name
-        self.level = lvl
-        self.health = hp
-        self.attack = atk
-        self.defence = df
+        self.__name = name
+        self.__level = lvl
+        self.__health = hp
+        self.__attack = atk
+        self.__defence = df
 
     def get_name(self):
-        return self.name
+        return self.__name
 
     def get_hp(self):
-        return self.health
+        return self.__health
 
     def get_atk(self):
-        return self.attack
+        return self.__attack
 
     def get_def(self):
-        return self.defence
+        return self.__defence
 
     def set_name(self, name):
-        self.name = name
+        self.__name = name
 
     def set_hp(self, hp):
-        self.health = hp
+        self.__health = hp
 
     def set_atk(self, atk):
-        self.attack = atk
+        self.__attack = atk

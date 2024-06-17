@@ -5,6 +5,8 @@ import time
 
 def initiate_game(name, class_type, window):
     spiel = Spiel(name, class_type, window)
+    window.stop_music()
+    window.play_game_music()
     window.get_gamelogic(spiel)
     window.get_player(spiel.spieler)
 
