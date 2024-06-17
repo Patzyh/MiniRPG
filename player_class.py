@@ -8,9 +8,9 @@ class Spieler:
         self.__level = 0
         self.__ui = window
         self.__class_types = {
-            "Kämpfer": {"health": 70, "atk": 14},
-            "Bogenschütze": {"health": 60, "atk": 17},
-            "Magier": {"health": 50, "atk": 20}
+            "Kämpfer": {"health": 60, "atk": 14},
+            "Bogenschütze": {"health": 50, "atk": 17},
+            "Magier": {"health": 40, "atk": 20}
         }
 
         if class_type in self.__class_types:

@@ -44,9 +44,9 @@ class App(tk.CTk):
         self.__labels = []
 
         self.__class_types = {
-            "Kämpfer": {"health": 70, "atk": 14},
-            "Bogenschütze": {"health": 60, "atk": 17},
-            "Magier": {"health": 50, "atk": 20}
+            "Kämpfer": {"health": 60, "atk": 14},
+            "Bogenschütze": {"health": 50, "atk": 17},
+            "Magier": {"health": 40, "atk": 20}
         }
 
     def check_konami_code(self, event):

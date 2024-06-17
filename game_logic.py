@@ -110,7 +110,7 @@ class Spiel:
         self.__ui.print("Du hast das Spiel beendet.", 4000)
         self.__ui.print("Du hast " + str(self.__punkte) + " Punkte erreicht.", 4000)
         self.__ui.print("Das Spiel wird beendet.", 4000)
-        self.__ui.after(4000, self.__ui.quit())
+        self.__ui.quit()
 
     # Getter and Setter for punkte
     @property
