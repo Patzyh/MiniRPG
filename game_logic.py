@@ -45,7 +45,7 @@ class Spiel:
                     self.__ui.page_select(6)
                     self.__ui.fancy_print("+ 10.000 Aura.", 4000)
                 else:
-                    self.__ui.print("+ 10.000 Aura", 4000)
+                    self.__ui.print("+ 1000 Aura", 4000)
                     self.stopfight(True)
             self.__current_attacker = "enemy"
 

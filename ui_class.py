@@ -57,7 +57,7 @@ class App(tk.CTk):
         }
 
         self.__cooldown = False
-        self.__cooldown_active = False
+        self.__cooldown_active = True
 
     def check_konami_code(self, event):
         if event.keysym == self.__konami_code[len(self.__key_presses)]:
@@ -174,7 +174,7 @@ class App(tk.CTk):
             self.__label = tk.CTkLabel(self, text="GAME OVER", font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
 
-            self.__description = tk.CTkLabel(self, text="Du hast verloren. Möchtest du es nochmal versuchen?", font=("Montserrat", 15), justify="center", anchor="n", wraplength=600)
+            self.__description = tk.CTkLabel(self, text="Du hast verloren.\n-10.000 Aura... \n\n Möchtest du es nochmal versuchen?", font=("Montserrat", 15), justify="center", anchor="n", wraplength=600)
             self.__description.pack(pady=50, padx=0)
 
             self.__button = tk.CTkButton(self, text="Neustart", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
@@ -328,9 +328,11 @@ class App(tk.CTk):
 
     def start_cooldown(self):
         for i in range(2, -1, -1):
-            self.__move.configure(text=f"Weiter ({i})")
+            if self.__move.winfo_exists():  # Check if the widget still exists
+                self.__move.configure(text=f"Weiter ({i})")
             time.sleep(1)
-        self.__move.configure(text="Weiter", state="normal")
+        if self.__move.winfo_exists():  # Check if the widget still exists
+            self.__move.configure(text="Weiter", state="normal")
         self.__cooldown = False
 
     def update_progress(self, progress: float):
