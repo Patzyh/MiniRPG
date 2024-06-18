@@ -5,13 +5,16 @@ class Gegner:
         self.__enemytype = enemytype
         if self.__enemytype == 0:
             self.__enemytype = random.randint(1, 3)
+        else:
+            self.__enemytype = enemytype
         self.__dead = False
         self.__ui = window
 
         self.__enemy = [
             {"name": "Orc", "angriff": 14, "leben": 17},
             {"name": "Goblin", "angriff": 16, "leben": 15},
-            {"name": "Geist", "angriff": 18, "leben": 13}
+            {"name": "Geist", "angriff": 18, "leben": 13},
+            {"name": "Malakar", "angriff": 20, "leben": 50}
         ]
 
         self.__enemy = self.__enemy[self.__enemytype - 1]

@@ -3,6 +3,8 @@ from tkextrafont import Font
 import pygame
 from PIL import Image
 import main
+import threading
+import time
 
 
 class App(tk.CTk):
@@ -30,6 +32,7 @@ class App(tk.CTk):
         self.__orc = tk.CTkImage(dark_image=Image.open("resources/materials/orc.png"), size=(30, 30))
         self.__goblin = tk.CTkImage(dark_image=Image.open("resources/materials/goblin.png"), size=(30, 30))
         self.__geist = tk.CTkImage(dark_image=Image.open("resources/materials/geist.png"), size=(30, 30))
+        self.__zauberer = tk.CTkImage(dark_image=Image.open("resources/materials/zauberer.png"), size=(30, 30))
 
         self.__player = None
         self.__game_logic = None
@@ -53,6 +56,9 @@ class App(tk.CTk):
             "Magier": {"health": 50, "atk": 20}
         }
 
+        self.__cooldown = False
+        self.__cooldown_active = False
+
     def check_konami_code(self, event):
         if event.keysym == self.__konami_code[len(self.__key_presses)]:
             self.__key_presses.append(event.keysym)
@@ -67,6 +73,8 @@ class App(tk.CTk):
     def page_select(self, page):
         self.clear_site()
         if page == 0:
+            self.after(1000, self.play_title_music)
+
             self.__label = tk.CTkLabel(self, text="REALM OF SHADOWS", font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
 
@@ -177,18 +185,18 @@ class App(tk.CTk):
 
         elif page == 6:
 
-                # win page
-                self.__label = tk.CTkLabel(self, text="GEWONNEN", font=("Montserrat Black", 40))
-                self.__label.pack(pady=10)
+            # win page
+            self.__label = tk.CTkLabel(self, text="GEWONNEN", font=("Montserrat Black", 40))
+            self.__label.pack(pady=10)
 
-                self.__description = tk.CTkLabel(self, text="Du hast gewonnen. Möchtest du es nochmal versuchen?", font=("Montserrat", 15), justify="center", anchor="n", wraplength=600)
-                self.__description.pack(pady=50, padx=0)
+            self.__description = tk.CTkLabel(self, text="Du hast gewonnen.\nProgrammiert von:\n\nAngelo Annunziata\nTjark Lefhalm\n\nfeat. Kevin Kellner & Markus Rühl\n\nAlle Materialen sind nicht lizensiert und haben wir aus dem Internet geklaut.\nMöchtest du es nochmal versuchen?", font=("Montserrat", 15), justify="center", anchor="n", wraplength=600)
+            self.__description.pack(pady=10, padx=0)
 
-                self.__button = tk.CTkButton(self, text="Neustart", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
-                self.__button.pack(pady=5, padx=5, side="bottom", anchor="e")
+            self.__button = tk.CTkButton(self, text="Neustart", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
+            self.__button.pack(pady=5, padx=5, side="bottom", anchor="e")
 
-                self.__button = tk.CTkButton(self, text="Beenden", font=("Montserrat Black", 20, "bold"), command=self.quit)
-                self.__button.place(x=10, y=360)
+            self.__button = tk.CTkButton(self, text="Beenden", font=("Montserrat Black", 20, "bold"), command=self.quit)
+            self.__button.place(x=10, y=360)
 
 
 
@@ -221,12 +229,16 @@ class App(tk.CTk):
             self.__enemypic = tk.CTkLabel(self, image=self.__orc, text="")
             self.__enemypic.place(x=440, y=27)
         elif enemy.name == "Goblin":
-            self.__enemyhealth.configure(progress_color="#f1c40f")
+            self.__enemyhealth.configure(progress_color="#9b59b6")
             self.__enemypic = tk.CTkLabel(self, image=self.__goblin, text="")
             self.__enemypic.place(x=440, y=27)
         elif enemy.name == "Geist":
             self.__enemyhealth.configure(progress_color="#3498db")
             self.__enemypic = tk.CTkLabel(self, image=self.__geist, text="")
+            self.__enemypic.place(x=440, y=27)
+        elif enemy.name == "Malakar":
+            self.__enemyhealth.configure(progress_color="#f1c40f")
+            self.__enemypic = tk.CTkLabel(self, image=self.__zauberer, text="")
             self.__enemypic.place(x=440, y=27)
 
         self.__enemylabel = tk.CTkLabel(self, text=enemy.name, font=("Montserrat Black", 20), bg_color="transparent")
@@ -240,6 +252,52 @@ class App(tk.CTk):
     def update_enemybar(self, health: float):
         self.__enemyhealth.set(health)
 
+    def fancy_print(self, text, time):
+        # Darken the window
+        self.configure(bg_color="#2a2a2a")
+
+        # Split the text into two halves
+        mid_index = len(text) // 2
+        left_text = text[:mid_index]
+        right_text = text[mid_index:]
+
+        # Create a new label
+        label = tk.CTkLabel(self, text="", font=("Montserrat Black", 20), justify="center", anchor="s", wraplength=400)
+        label.pack(pady=0, padx=50, side="bottom")
+
+        # Function to update the label text
+        def update_text(i):
+            # Check if the label widget still exists
+            if label.winfo_exists():
+                # Add the letters one by one, first from the left half of the text and then from the right half
+                new_text = left_text[:i] + right_text[:i]
+                label.configure(text=new_text)
+                if i < len(left_text):
+                    # Schedule the next update
+                    self.after(100, update_text, i + 1)
+                else:
+                    # Schedule the label destruction
+                    self.after(time, label.destroy)
+
+        # Start the text animation
+        update_text(0)
+
+        # If there are already 4 labels, destroy the oldest one
+        if len(self.__labels) == 2:
+            oldest_label = self.__labels.pop(0)
+            oldest_label.destroy()
+
+        # Add the new label to the list of labels
+        self.__labels.append(label)
+
+        # If there are already 4 labels, destroy the oldest one
+        if len(self.__labels) == 2:
+            oldest_label = self.__labels.pop(0)
+            oldest_label.destroy()
+
+        # Add the new label to the list of labels
+        self.__labels.append(label)
+
     def remove_enemybar(self):
         self.__enemyhealth.destroy()
         self.__enemyhealthlabel.destroy()
@@ -250,13 +308,30 @@ class App(tk.CTk):
         self.__game_logic = gamelogic
 
     def move(self):
-        if self.__game_logic is not None:
-            self.__game_logic.laufen()
+        if not self.__cooldown:
+            self.__cooldown = True
+            if self.__move.winfo_exists():  # Check if the button widget still exists
+                self.__move.configure(state="disabled")
+            if self.__game_logic is not None:
+                self.__game_logic.laufen()
 
-            self.__points = self.__game_logic.round
-            if self.__progressPoints.winfo_exists():  # Check if the widget still exists
-                self.__progressPoints.configure(text=self.__points)
-                self.update_progress(self.__points / 20)
+                self.__points = self.__game_logic.round
+                if self.__progressPoints.winfo_exists():  # Check if the widget still exists
+                    self.__progressPoints.configure(text=self.__points)
+                    self.update_progress(self.__points / 20)
+            if self.__cooldown_active:  # Only start the cooldown if it's active
+                threading.Thread(target=self.start_cooldown).start()
+            else:
+                if self.__move.winfo_exists():  # Check if the button widget still exists
+                    self.__move.configure(state="normal")
+                self.__cooldown = False
+
+    def start_cooldown(self):
+        for i in range(2, -1, -1):
+            self.__move.configure(text=f"Weiter ({i})")
+            time.sleep(1)
+        self.__move.configure(text="Weiter", state="normal")
+        self.__cooldown = False
 
     def update_progress(self, progress: float):
         self.__progressBar.set(progress)

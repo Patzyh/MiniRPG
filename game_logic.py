@@ -6,7 +6,6 @@ import time
 
 class Spiel:
     def __init__(self, name, class_type, window):  # yurr
-        self.__punkte = 0
         self.__ui = window
         self.__spieler = Spieler(name, class_type, self.__ui)
         self.__round = 0
@@ -16,14 +15,16 @@ class Spiel:
         self.__current_attacker = None
 
 
-    def initate_fight(self, first_attack):
+    def initate_fight(self, first_attack, boss=False):
         self.__ui.print("Ein Gegner greift dich an.", 4000)
-        self.__gegner = Gegner(0, window=self.__ui)
+        if boss:
+            self.__gegner = Gegner(4, window=self.__ui)
+        else:
+            self.__gegner = Gegner(0, window=self.__ui)
         self.__current_attacker = first_attack
 
     def next_attack(self):
         if self.__gegner.dead or self.__spieler.get_hp() <= 0:
-            self.__ui.print("Der Kampf ist vorbei.", 4000)
             self.__current_attacker = None
             return
 
@@ -33,7 +34,6 @@ class Spiel:
             self.__spieler.set_hp(self.__spieler.get_hp() - damage)
             self.__ui.print("Du hast " + str(damage) + " Schaden genommen.", 4000)
             if self.__spieler.get_hp() <= 0:
-                self.__ui.print("-1000 Aura", 4000)
                 self.stopfight(False)
             self.__current_attacker = "player"
         else:
@@ -41,18 +41,22 @@ class Spiel:
             self.__gegner.leben = self.__gegner.leben - damage
             self.__ui.print("Du hast " + str(self.__spieler.get_damage()) + " Schaden gemacht.", 4000)
             if self.__gegner.leben <= 0:
-                self.__ui.print("+ 1000 Aura", 4000)
-                self.stopfight(True)
+                if self.__gegner.name == "Malakar":
+                    self.__ui.page_select(6)
+                    self.__ui.fancy_print("+ 10.000 Aura.", 4000)
+                else:
+                    self.__ui.print("+ 10.000 Aura", 4000)
+                    self.stopfight(True)
             self.__current_attacker = "enemy"
 
     def stopfight(self, win):
         if win:
-            self.__punkte = self.__punkte + 1000
             self.__ui.print("Du hast den Kampf gewonnen.", 4000)
         else:
             self.stop_game()
         self.__gegner.dead = True
         self.__current_attacker = None
+        self.__gegner = None  # Setze den Gegner auf None, wenn der Kampf vorbei ist
 
 
     def the_dark_forest(self):
@@ -76,6 +80,9 @@ class Spiel:
             stealth = 0
             self.initate_fight("player")
             self.__ui.print("Ein Gegner ist in der Nähe. Ich sollte mich auf einen Kampf vorbereiten.", 4000)
+        elif standard_gegner == 2 and self.__round > 20:
+            self.initate_fight("player", True)
+            self.__ui.fancy_print(" Malakar hat dich entdeckt. Du greifst ihn an.", 6000)
         else:
             self.__ui.print("Es scheint kein Gegner in der Nähe zu sein. Ich kann wohl unbesorgt weitergehen.", 4000)
         if stealth == 1:
@@ -114,15 +121,6 @@ class Spiel:
 
     def stop_game(self):
         self.__ui.page_select(5)
-
-    # Getter and Setter for punkte
-    @property
-    def punkte(self):
-        return self.__punkte
-
-    @punkte.setter
-    def punkte(self, punkte):
-        self.__punkte = punkte
 
     # Getter and Setter for ui
     @property

@@ -17,7 +17,7 @@
   - Malakar als Boss selbst
 
 # TODO
-- [ ] EndBoss Malakar erstellen
+- [x] EndBoss Malakar erstellen
   - Nach 20 Runden, kann man den richtigen Raum nach so 1 - 10 weitere Runden finden
   - Malakar hat 70 HP
 - [x] Bilder einfügen
@@ -26,4 +26,4 @@
   - Ingame Musik
 - [x] Position anzeigen
   - irgendwie auch die gegner dahingegen anpassen, dass die dann mehr damage machen und so idk, kann tarek machen
-- [ ] Credits
+- [x] Credits
