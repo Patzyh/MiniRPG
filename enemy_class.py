@@ -10,29 +10,19 @@ class Gegner:
         self.__dead = False
         self.__ui = window
         self.__level = level
-        if self.__level > 1:
-            self.__enemy = [
-                {"name": "Orc", "angriff": 14, "leben": 17, "xp": 100},
-                {"name": "Goblin", "angriff": 16, "leben": 15, "xp": 110},
-                {"name": "Geist", "angriff": 18, "leben": 13, "xp": 120},
-                {"name": "Malakar", "angriff": 20, "leben": 50, "xp": 1000}
-            ]
-            self.__enemy = self.__enemy[self.__enemytype - 1]
-            self.__enemy["angriff"] += 1 * (self.__level - 1)
-            self.__enemy["leben"] += 2 * (self.__level - 1)
-            self.__enemy["xp"] += 10 * (self.__level - 1)
-        self.__enemy = [ # haben wir selber gebalanced, sonst wärs legit unmöglich
-            {"name": "Orc", "angriff": 14, "leben": 17},
-            {"name": "Goblin", "angriff": 16, "leben": 15},
-            {"name": "Geist", "angriff": 18, "leben": 13},
-            {"name": "Malakar", "angriff": 20, "leben": 50}
+        self.__enemy = [
+            {"name": "Orc", "angriff": 14, "leben": 17, "xp": 100},
+            {"name": "Goblin", "angriff": 16, "leben": 15, "xp": 110},
+            {"name": "Geist", "angriff": 18, "leben": 13, "xp": 120},
+            {"name": "Malakar", "angriff": 20, "leben": 50, "xp": 1000}
         ]
-
         self.__enemy = self.__enemy[self.__enemytype - 1]
-        self.__name = self.__enemy["name"]
+        self.__enemy["angriff"] += 1 * (self.__level - 1)
+        self.__enemy["leben"] += 2 * (self.__level - 1)
+        self.__enemy["xp"] += 10 * (self.__level - 1)
         self.__leben = self.__enemy["leben"]
         self.__maxhealth = self.__enemy["leben"]
-
+        self.__name = self.__enemy["name"]
         self.__ui.create_enemybar(self)
 
     @property
@@ -70,3 +60,11 @@ class Gegner:
     @atk.setter
     def atk(self, atk):
         self.__enemy["angriff"] = atk
+
+    @property
+    def xp(self):
+        return self.__enemy["xp"]
+
+    @xp.setter
+    def xp(self, xp):
+        self.__enemy["xp"] = xp

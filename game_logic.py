@@ -51,6 +51,8 @@ class Spiel:
     def stopfight(self, win):
         if win:
             self.__ui.print("Du hast den Kampf gewonnen.", 4000)
+            self.__spieler.add_xp(self.__gegner.xp)
+            self.__spieler.level_up()
         else:
             self.stop_game()
         self.__gegner.dead = True
