@@ -13,7 +13,7 @@ def initiate_game(name, class_type, window):
 
 
 def main():
-    window = ui.App("v1.6.9")
+    window = ui.App("v1.9.4")
     window.mainloop()
 
 if __name__ == "__main__": # glaub das behebt, das wenn ich das importier, das es nicht nochmal ausgeführt wird
