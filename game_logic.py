@@ -81,7 +81,7 @@ class Spiel:
             stealth = 0
             self.initate_fight("player")
             self.__ui.print("Ein Gegner ist in der Nähe. Ich sollte mich auf einen Kampf vorbereiten.", 4000)
-        elif standard_gegner == 2 and self.__round > 20:
+        elif standard_gegner == 2 and self.__location == "Malakars dark Tower":
             self.initate_fight("player", True)
             self.__ui.fancy_print(" Malakar hat dich entdeckt. Du greifst ihn an.", 6000)
         else:
@@ -108,15 +108,15 @@ class Spiel:
             self.__location = "Auf dem Weg zum Haunted Castle"
         elif self.__location == "Haunted Castle":
             self.__location = "Auf dem Weg zum Turm von Malakar"
-        if self.__round == 5:
+        if self.__round == 20:
             self.__ui.print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.", 6000)
             self.__location = "The Dark Forest"
             # ui current location update
-        elif self.__round == 12:
+        elif self.__round == 40:
             self.__ui.print("Du befindest dich vor einem alten Schloss. Es ist verlassen und du siehst nur noch die Ruinen.", 6000)
             self.__location = "Haunted Castle"
             # ui current location update
-        elif self.__round == 20:
+        elif self.__round == 70:
             self.__ui.print("Du befindest dich vor Malakars Turm. Ein finsterer Ort, an dem böse Mächte wirken.", 6000)
             self.__location = "Malakars dark Tower"
         self.__ui.update_location(self.__location)

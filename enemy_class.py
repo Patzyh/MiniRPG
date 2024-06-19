@@ -25,6 +25,7 @@ class Gegner:
         self.__name = self.__enemy["name"]
         self.__ui.create_enemybar(self)
 
+
     @property
     def dead(self):
         return self.__dead

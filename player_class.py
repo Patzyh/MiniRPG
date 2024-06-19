@@ -62,18 +62,27 @@ class Spieler:
         return self.__max_xp
     def add_xp(self, xp):
         self.__xp += xp
-        self.__ui.update_level(self.__xp / self.__max_xp)
+        self.__ui.update_experience(self.__xp / self.__max_xp)
+
     def update_max_xp(self):
         self.__max_xp += 10 * self.__level -1 # 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300 usw.
 
     def level_up(self):
         if self.__xp >= self.__max_xp:
+            print("level up")
             self.__level += 1
             self.__xp = self.__xp - self.__max_xp
+            self.__max_xp = 200 + 10 * self.__level - 1
             self.__ui.update_level(self.__level)
+            self.__ui.update_experience(self.__xp / self.__max_xp)
             self.update_max_xp()
             self.__maxhealth += 2
-            self.__health = self.__maxhealth
             self.__atk += 1
+            self.__health += 2
+            self.__ui.update_health(self.__health / self.__maxhealth)
+
+            if self.__level % 3 == 0:
+                self.__ui.fancy_print("Du hast einen Heiltrank erhalten.", 4000)
+                self.__ui.give_healpot()
 
 

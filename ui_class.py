@@ -242,13 +242,13 @@ class App(tk.CTk):
                 self.__pots[3] = True
 
     def give_healpot(self):
-        if not self.__pots[1]:
+        if self.__pots[1]:
             self.__healpot_1.configure(state="normal", image=self.__healpot)
             self.__pots[1] = False
-        elif not self.__pots[2]:
+        elif self.__pots[2]:
             self.__healpot_2.configure(state="normal", image=self.__healpot)
             self.__pots[2] = False
-        elif not self.__pots[3]:
+        elif self.__pots[3]:
             self.__healpot_3.configure(state="normal", image=self.__healpot)
             self.__pots[3] = False
 
@@ -372,8 +372,11 @@ class App(tk.CTk):
             self.__move.configure(text="Weiter", state="normal")
         self.__cooldown = False
 
-    def update_expierence(self, progress: float):
+    def update_experience(self, progress: float):
         self.__experienceBar.set(progress)
+
+    def update_level(self, level: int):
+        self.__experienceLevel.configure(text=str(level))
 
     def print(self, text, time):
         # Create a new label
@@ -405,8 +408,7 @@ class App(tk.CTk):
     def update_health(self, health: float):
         self.__health.set(health)
 
-    def update_level(self, level: float):
-        self.__level.set(level)
+
 
     def save_name(self):
         self.__name = self.__name.get()
