@@ -64,7 +64,7 @@ class App(tk.CTk):
         }
 
         self.__cooldown = False
-        self.__cooldown_active = False
+        self.__cooldown_active = True
 
         self.__pots = {1: False, 2: False, 3: False}
 
@@ -258,6 +258,10 @@ class App(tk.CTk):
     def update_level(self, level: int):
         self.__experienceLevel.configure(text=str(level))
 
+    def update_experience(self, progress: float):
+        self.__experienceBar.set(progress)
+
+
     def create_enemybar(self, enemy):
         self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
         self.__enemyhealth.place(x=180, y=37)
@@ -364,19 +368,13 @@ class App(tk.CTk):
                 self.__cooldown = False
 
     def start_cooldown(self):
-        for i in range(2, -1, -1):
+        for i in range(1, 0, -1):
             if self.__move.winfo_exists():  # Check if the widget still exists
-                self.__move.configure(text=f"Weiter ({i})")
+                self.__move.configure(text=f"Weiter ({i}s)")
             tm.sleep(1)
         if self.__move.winfo_exists():  # Check if the widget still exists
             self.__move.configure(text="Weiter", state="normal")
         self.__cooldown = False
-
-    def update_experience(self, progress: float):
-        self.__experienceBar.set(progress)
-
-    def update_level(self, level: int):
-        self.__experienceLevel.configure(text=str(level))
 
     def print(self, text, time):
         # Create a new label
@@ -395,12 +393,12 @@ class App(tk.CTk):
     def play_title_music(self): # fun fact, league of legends musik
         pygame.mixer.init()
         pygame.mixer.music.load("resources/sounds/blind_pick_music.mp3")
-        pygame.mixer.music.play()
+        pygame.mixer.music.play(loops=-1)
 
     def play_game_music(self):
         pygame.mixer.init()
         pygame.mixer.music.load("resources/sounds/background_music.mp3")
-        pygame.mixer.music.play()
+        pygame.mixer.music.play(loops=-1)
 
     def stop_music(self):
         pygame.mixer.music.stop()
