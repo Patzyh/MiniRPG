@@ -1,6 +1,5 @@
 import ui_class as ui
 from game_logic import Spiel
-import time
 
 
 def initiate_game(name, class_type, window):
@@ -12,8 +11,8 @@ def initiate_game(name, class_type, window):
 
 
 def main():
-    window = ui.App("v1.6.7")
+    window = ui.App("v1.6.9")
     window.mainloop()
 
-if __name__ == "__main__":
+if __name__ == "__main__": # glaub das behebt, das wenn ich das importier, das es nicht nochmal ausgeführt wird
     main()

@@ -1,10 +1,10 @@
 import customtkinter as tk
 from tkextrafont import Font
 import pygame
-from PIL import Image, ImageTk
+from PIL import Image
 import main
 import threading
-import time
+import time as tm
 
 
 class App(tk.CTk):
@@ -23,6 +23,8 @@ class App(tk.CTk):
         tk.set_default_color_theme("resources/theme/orange.json") # color setter
         tk.set_appearance_mode("dark")
 
+        # hier sind nen paar Materials glaub ich
+
         self.__fighter = tk.CTkImage(dark_image=Image.open("resources/materials/sword.png"), size=(100, 100))
         self.__archer = tk.CTkImage(dark_image=Image.open("resources/materials/bow-and-arrow.png"), size=(100, 100))
         self.__mage = tk.CTkImage(dark_image=Image.open("resources/materials/magic-wand.png"), size=(100, 100))
@@ -38,7 +40,7 @@ class App(tk.CTk):
         self.__player = None
         self.__game_logic = None
 
-        self.iconbitmap("resources/materials/zauberer.ico")
+        self.iconbitmap("resources/materials/zauberer.ico") # hier wird malakar zum app icon
 
         Font(file="resources/fonts/Montserrat-VariableFont_wght.ttf") # font setter
 
@@ -48,7 +50,7 @@ class App(tk.CTk):
         self.__konami_code = ['Up', 'Up', 'Down', 'Down', 'Left', 'Right', 'Left', 'Right', 'b', 'a']
         self.__key_presses = []
 
-        self.__points = 0
+        self.__points = 0 # progress
 
         self.bind('<KeyPress>', self.check_konami_code)
 
@@ -78,7 +80,7 @@ class App(tk.CTk):
         self.clear_site()
         if page == 0:
             # start screen
-            self.after(1000, self.play_title_music)
+            self.after(100, self.play_title_music)
 
             self.__label = tk.CTkLabel(self, text="REALM OF SHADOWS", font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
@@ -261,7 +263,7 @@ class App(tk.CTk):
     def update_enemybar(self, health: float):
         self.__enemyhealth.set(health)
 
-    def fancy_print(self, text, time):
+    def fancy_print(self, text, time): # geiler fancy print, hab glaub 5x am meinem Leben verzweifelt
         # Darken the window
         self.configure(bg_color="#2a2a2a")
 
@@ -313,7 +315,7 @@ class App(tk.CTk):
         self.__enemylabel.destroy()
         self.__enemypic.destroy()
 
-    def get_gamelogic(self, gamelogic):
+    def get_gamelogic(self, gamelogic): # keine ahnung wie ich das hätte sonst machen sollen
         self.__game_logic = gamelogic
 
     def move(self):
@@ -339,7 +341,7 @@ class App(tk.CTk):
         for i in range(2, -1, -1):
             if self.__move.winfo_exists():  # Check if the widget still exists
                 self.__move.configure(text=f"Weiter ({i})")
-            time.sleep(1)
+            tm.sleep(1)
         if self.__move.winfo_exists():  # Check if the widget still exists
             self.__move.configure(text="Weiter", state="normal")
         self.__cooldown = False
@@ -361,7 +363,7 @@ class App(tk.CTk):
         # Add the new label to the list of labels
         self.__labels.append(new_label)
 
-    def play_title_music(self):
+    def play_title_music(self): # fun fact, league of legends musik
         pygame.mixer.init()
         pygame.mixer.music.load("resources/sounds/blind_pick_music.mp3")
         pygame.mixer.music.play()
