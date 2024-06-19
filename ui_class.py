@@ -52,7 +52,6 @@ class App(tk.CTk):
         self.__key_presses = []
 
         self.__points = 0 # progress
-        self.__level = Spieler.get_level()
 
         self.bind('<KeyPress>', self.check_konami_code)
 
@@ -65,7 +64,9 @@ class App(tk.CTk):
         }
 
         self.__cooldown = False
-        self.__cooldown_active = True
+        self.__cooldown_active = False
+
+        self.__pots = {1: False, 2: False, 3: False}
 
     def check_konami_code(self, event): # kleines Easter Egg um Kevin mit seinem stabilen Freund zu zeigen :)
         if event.keysym == self.__konami_code[len(self.__key_presses)]:
@@ -143,15 +144,21 @@ class App(tk.CTk):
             self.__button.place(x=10, y=360)
         elif page == 4:
             # play page
-            self.__progressBar = tk.CTkProgressBar(self, width=15, height=250, orientation="vertical",
+            self.__experienceBar = tk.CTkProgressBar(self, width=15, height=250, orientation="vertical",
                                                    progress_color="#3498db", mode="determinate", determinate_speed=0.2)
-            self.__progressBar.place(x=565, y=75)
+            self.__experienceBar.place(x=565, y=75)
+
+            self.__experienceLevellabel = tk.CTkLabel(self, text="LVL", font=("Montserrat Black", 20), bg_color="transparent")
+            self.__experienceLevellabel.place(x=552, y=45)
+
+            self.__experienceLevel = tk.CTkLabel(self, text="1", font=("Montserrat Black", 20), bg_color="transparent")
+            self.__experienceLevel.place(x=565, y=330)
 
             self.__progressPoints = tk.CTkLabel(self, text=str(self.__points), font=("Montserrat Black", 20), bg_color="transparent",
                                                 anchor="center")
-            self.__progressPoints.place(x=565, y=330)
+            self.__progressPoints.place(x=35, y=360)
 
-            self.__progressBar.set(0)
+            self.__experienceBar.set(0)
 
             self.__health = tk.CTkProgressBar(self, width=250, height=15, progress_color="#2ecc71", mode="determinate", determinate_speed=0.2, orientation="horizontal")
             self.__health.place(x=180, y=370)
@@ -224,15 +231,33 @@ class App(tk.CTk):
             if id == 1:
                 # make the button grey and not clickable
                 self.__healpot_1.configure(state="disabled", image=self.__healpot_gray)
+                self.__pots[1] = True
             elif id == 2:
                 # make the button grey and not clickable
                 self.__healpot_2.configure(state="disabled", image=self.__healpot_gray)
+                self.__pots[2] = True
             elif id == 3:
                 # make the button grey and not clickable
                 self.__healpot_3.configure(state="disabled", image=self.__healpot_gray)
+                self.__pots[3] = True
+
+    def give_healpot(self):
+        if not self.__pots[1]:
+            self.__healpot_1.configure(state="normal", image=self.__healpot)
+            self.__pots[1] = False
+        elif not self.__pots[2]:
+            self.__healpot_2.configure(state="normal", image=self.__healpot)
+            self.__pots[2] = False
+        elif not self.__pots[3]:
+            self.__healpot_3.configure(state="normal", image=self.__healpot)
+            self.__pots[3] = False
 
     def update_location(self, location):
         self.__location_label.configure(text=location)
+
+    def update_level(self, level: int):
+        self.__experienceLevel.configure(text=str(level))
+
     def create_enemybar(self, enemy):
         self.__enemyhealth = tk.CTkProgressBar(self, width=250, height=15, progress_color="#e74c3c", mode="determinate", determinate_speed=0.2, orientation="horizontal")
         self.__enemyhealth.place(x=180, y=37)
@@ -331,7 +356,6 @@ class App(tk.CTk):
                 self.__points = self.__game_logic.round
                 if self.__progressPoints.winfo_exists():  # Check if the widget still exists
                     self.__progressPoints.configure(text=self.__points)
-                    self.update_progress(self.__points / 20)
             if self.__cooldown_active:  # Only start the cooldown if it's active
                 threading.Thread(target=self.start_cooldown).start()
             else:
@@ -348,8 +372,8 @@ class App(tk.CTk):
             self.__move.configure(text="Weiter", state="normal")
         self.__cooldown = False
 
-    def update_progress(self, progress: float):
-        self.__progressBar.set(progress)
+    def update_expierence(self, progress: float):
+        self.__experienceBar.set(progress)
 
     def print(self, text, time):
         # Create a new label
