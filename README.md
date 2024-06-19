@@ -27,5 +27,5 @@
 - [x] Position anzeigen
   - irgendwie auch die gegner dahingegen anpassen, dass die dann mehr damage machen und so idk, kann tarek machen
 - [x] Credits
-- [ ] Levelsytem
+- [x] Levelsytem
 - [ ] FLucht vor Gegener
