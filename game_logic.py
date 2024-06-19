@@ -2,6 +2,7 @@ from player_class import Spieler
 from enemy_class import Gegner
 import random
 
+
 class Spiel:
     def __init__(self, name, class_type, window):  # yurr
         self.__ui = window
@@ -23,7 +24,7 @@ class Spiel:
 
     def next_attack(self):
         if self.__gegner.dead or self.__spieler.get_hp() <= 0:
-            self.__current_attacker = None
+            self.__current_attacker = None #type shit
             return
 
         print(self.__current_attacker)
@@ -100,6 +101,8 @@ class Spiel:
 
     def update_location(self):
         if self.__location == "The Dark Forest":
+            self.__location = "Auf dem Weg zum Hounted Castle"
+        elif self.__location == "Haunted Castle":
             self.__location = "Auf dem Weg zum Haunted Castle"
         elif self.__location == "Haunted Castle":
             self.__location = "Auf dem Weg zum Turm von Malakar"
@@ -120,6 +123,7 @@ class Spiel:
     def stop_game(self):
         self.__ui.page_select(5)
 
+    # Wenn Sie sich das ansehen sollten Sie sich nicht die Getter und Setter ansehen
     # Getter and Setter for ui
     @property
     def ui(self):
