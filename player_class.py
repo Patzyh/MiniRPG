@@ -78,7 +78,7 @@ class Spieler:
             self.update_max_xp()
             self.__maxhealth += 2
             self.__atk += 2
-            self.__health += 2
+            self.__health += 3
             self.__ui.update_health(self.__health / self.__maxhealth)
 
             if self.__level % 3 == 0:
