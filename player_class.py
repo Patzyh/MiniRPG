@@ -62,12 +62,11 @@ class Spieler:
         return self.__max_xp
     def add_xp(self, xp):
         self.__xp += xp
-        self.__ui.update_xp(xp / self.__max_xp)
+        self.__ui.update_level(self.__xp / self.__max_xp)
     def update_max_xp(self):
         self.__max_xp += 10 * self.__level -1 # 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300 usw.
 
     def level_up(self):
-        self.__ui.update_level(self.__xp / self.__max_xp)
         if self.__xp >= self.__max_xp:
             self.__level += 1
             self.__xp = self.__xp - self.__max_xp
