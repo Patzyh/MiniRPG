@@ -6,7 +6,7 @@
 - Alle Stages kriegen einen festen Gegner zugewiesen(oder mehrere je nach balancing der von Gegner und Spieler)
 - Im kampf kann man nicht weiterlaufen(Erweiterbar um eine Flucht für den Spieler zu ermöglichen)
 
-  Zukünftige Erweiterungen:
+  Mögliche Erweiterungen:
   - Inventar
   - Waffen(Effekte)
   - Zauber
