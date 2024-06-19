@@ -19,7 +19,7 @@ class Spiel:
         if boss:
             self.__gegner = Gegner(4, window=self.__ui)
         else:
-            self.__gegner = Gegner(0, window=self.__ui)
+            self.__gegner = Gegner(0, window=self.__ui, level=self.__spieler.get_level())
         self.__current_attacker = first_attack
 
     def next_attack(self):

@@ -2,6 +2,7 @@ import customtkinter as tk
 from tkextrafont import Font
 import pygame
 from PIL import Image
+from player_class import Spieler
 import main
 import threading
 import time as tm
@@ -51,6 +52,7 @@ class App(tk.CTk):
         self.__key_presses = []
 
         self.__points = 0 # progress
+        self.__level = Spieler.get_level()
 
         self.bind('<KeyPress>', self.check_konami_code)
 

@@ -1,7 +1,7 @@
 import random
 
 class Gegner:
-    def __init__(self, enemytype=0, window=None):
+    def __init__(self, enemytype=0, window=None, level=1):
         self.__enemytype = enemytype
         if self.__enemytype == 0:
             self.__enemytype = random.randint(1, 3)
@@ -9,7 +9,18 @@ class Gegner:
             self.__enemytype = enemytype
         self.__dead = False
         self.__ui = window
-
+        self.__level = level
+        if self.__level > 1:
+            self.__enemy = [
+                {"name": "Orc", "angriff": 14, "leben": 17, "xp": 100},
+                {"name": "Goblin", "angriff": 16, "leben": 15, "xp": 110},
+                {"name": "Geist", "angriff": 18, "leben": 13, "xp": 120},
+                {"name": "Malakar", "angriff": 20, "leben": 50, "xp": 1000}
+            ]
+            self.__enemy = self.__enemy[self.__enemytype - 1]
+            self.__enemy["angriff"] += 1 * (self.__level - 1)
+            self.__enemy["leben"] += 2 * (self.__level - 1)
+            self.__enemy["xp"] += 10 * (self.__level - 1)
         self.__enemy = [ # haben wir selber gebalanced, sonst wärs legit unmöglich
             {"name": "Orc", "angriff": 14, "leben": 17},
             {"name": "Goblin", "angriff": 16, "leben": 15},
