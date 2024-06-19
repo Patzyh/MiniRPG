@@ -7,7 +7,7 @@ class Spieler:
         self.__class_type = class_type
         self.__level = 0
         self.__ui = window
-        self.__class_types = {
+        self.__class_types = { # haben wir selber gebalanced, sonst wärs legit unmöglich
             "Kämpfer": {"health": 60, "atk": 14},
             "Bogenschütze": {"health": 50, "atk": 17},
             "Magier": {"health": 40, "atk": 20}
@@ -53,8 +53,6 @@ class Spieler:
         self.__ui.update_level(level)
 
     def get_damage(self):
-        damage = self.__atk - random.randint(1,3)
-        print(damage, "damage dealt")
-        return damage
+        return self.__atk - random.randint(1,3)
 
 

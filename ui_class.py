@@ -1,7 +1,7 @@
 import customtkinter as tk
 from tkextrafont import Font
 import pygame
-from PIL import Image
+from PIL import Image, ImageTk
 import main
 import threading
 import time
@@ -22,6 +22,7 @@ class App(tk.CTk):
         super().__init__()
         tk.set_default_color_theme("resources/theme/orange.json") # color setter
         tk.set_appearance_mode("dark")
+
         self.__fighter = tk.CTkImage(dark_image=Image.open("resources/materials/sword.png"), size=(100, 100))
         self.__archer = tk.CTkImage(dark_image=Image.open("resources/materials/bow-and-arrow.png"), size=(100, 100))
         self.__mage = tk.CTkImage(dark_image=Image.open("resources/materials/magic-wand.png"), size=(100, 100))
@@ -37,7 +38,10 @@ class App(tk.CTk):
         self.__player = None
         self.__game_logic = None
 
+        self.iconbitmap("resources/materials/zauberer.ico")
+
         Font(file="resources/fonts/Montserrat-VariableFont_wght.ttf") # font setter
+
         self.sizeto(600, 400)
         self.title("REALM OF SHADOWS - RPG - " + ver)
         self.page_select(0)
@@ -51,15 +55,15 @@ class App(tk.CTk):
         self.__labels = []
 
         self.__class_types = {
-            "Kämpfer": {"health": 70, "atk": 14},
-            "Bogenschütze": {"health": 60, "atk": 17},
-            "Magier": {"health": 50, "atk": 20}
+            "Kämpfer": {"health": 60, "atk": 14},
+            "Bogenschütze": {"health": 50, "atk": 17},
+            "Magier": {"health": 40, "atk": 20}
         }
 
         self.__cooldown = False
         self.__cooldown_active = True
 
-    def check_konami_code(self, event):
+    def check_konami_code(self, event): # kleines Easter Egg um Kevin mit seinem stabilen Freund zu zeigen :)
         if event.keysym == self.__konami_code[len(self.__key_presses)]:
             self.__key_presses.append(event.keysym)
             if self.__key_presses == self.__konami_code:
@@ -73,6 +77,7 @@ class App(tk.CTk):
     def page_select(self, page):
         self.clear_site()
         if page == 0:
+            # start screen
             self.after(1000, self.play_title_music)
 
             self.__label = tk.CTkLabel(self, text="REALM OF SHADOWS", font=("Montserrat Black", 40))
@@ -85,6 +90,7 @@ class App(tk.CTk):
             self.__button = tk.CTkButton(self, text="Starten", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(1))
             self.__button.pack(pady=10, side="bottom")
         elif page == 1:
+            # name creation, useless
             self.__label = tk.CTkLabel(self, text="CHARAKTERERSTELLUNG", font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
 
@@ -94,6 +100,7 @@ class App(tk.CTk):
             self.__button = tk.CTkButton(self, text="Weiter", font=("Montserrat Black", 20, "bold"), command=self.save_name)
             self.__button.pack(pady=10, side="bottom")
         elif page == 2:
+            # role selection page
             self.__label = tk.CTkLabel(self, text="WÄHLE DEINE ROLLE", font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
 
@@ -109,6 +116,7 @@ class App(tk.CTk):
             self.__buttonbtn = tk.CTkButton(self, text="Zurück", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(0))
             self.__buttonbtn.place(x=10, y=360)
         elif page == 3:
+            # confirm selection page
             self.__label = tk.CTkLabel(self, text=self.__role.upper(), font=("Montserrat Black", 40))
             self.__label.pack(pady=10)
 
@@ -130,6 +138,7 @@ class App(tk.CTk):
             self.__button = tk.CTkButton(self, text="Zurück", font=("Montserrat Black", 20, "bold"), command=lambda: self.page_select(2))
             self.__button.place(x=10, y=360)
         elif page == 4:
+            # play page
             self.__progressBar = tk.CTkProgressBar(self, width=15, height=250, orientation="vertical",
                                                    progress_color="#3498db", mode="determinate", determinate_speed=0.2)
             self.__progressBar.place(x=565, y=75)
@@ -149,7 +158,7 @@ class App(tk.CTk):
             self.__healthlabel.place(x=140, y=362)
 
             # self.__debugbutton = tk.CTkButton(self, text="DEBUG", font=("Montserrat Black", 20, "bold"), command=lambda: self.print("Du bist ein hässliches stück scheiße ich muss eigentlich nur den Text von Angelo ersetzen aber was soll ich machen. HERE I AM ON THE ROAD AGAIN. HERE WE ARE NOW ENTERTAIN US.", 4000))
-            # self.__debugbutton.place(x=300, y=250)
+            # self.__debugbutton.place(x=300, y=250) keine ahnung was das hier war, aber tjark hat sich mal ausgetobt
 
             self.__move = tk.CTkButton(self, text="Weiter", font=("Montserrat Black", 20, "bold"), command=self.move)
             self.__move.pack(pady=(10, 50), side="bottom")

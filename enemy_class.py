@@ -10,7 +10,7 @@ class Gegner:
         self.__dead = False
         self.__ui = window
 
-        self.__enemy = [
+        self.__enemy = [ # haben wir selber gebalanced, sonst wärs legit unmöglich
             {"name": "Orc", "angriff": 14, "leben": 17},
             {"name": "Goblin", "angriff": 16, "leben": 15},
             {"name": "Geist", "angriff": 18, "leben": 13},

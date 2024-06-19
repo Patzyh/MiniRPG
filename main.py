@@ -12,7 +12,7 @@ def initiate_game(name, class_type, window):
 
 
 def main():
-    window = ui.App("v0.1.2 INDEV")
+    window = ui.App("v1.6.7")
     window.mainloop()
 
 if __name__ == "__main__":
