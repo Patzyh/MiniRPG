@@ -82,6 +82,7 @@ class Spiel:
             self.initate_fight("player")
             self.__ui.print("Ein Gegner ist in der Nähe. Ich sollte mich auf einen Kampf vorbereiten.", 4000)
         elif standard_gegner == 2 and self.__location == "Malakars dark Tower":
+            stealth = 0
             self.initate_fight("player", True)
             self.__ui.fancy_print(" Malakar hat dich entdeckt. Du greifst ihn an.", 6000)
         else:

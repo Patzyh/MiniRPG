@@ -279,7 +279,7 @@ class App(tk.CTk):
             self.__enemypic = tk.CTkLabel(self, image=self.__zauberer, text="")
             self.__enemypic.place(x=440, y=27)
 
-        self.__enemylabel = tk.CTkLabel(self, text=enemy.name, font=("Montserrat Black", 20), bg_color="transparent")
+        self.__enemylabel = tk.CTkLabel(self, text=f"{enemy.name} | LVL {self.__player.get_level()}", font=("Montserrat Black", 20), bg_color="transparent")
         self.__enemylabel.pack(pady=(21, 0), padx=0)
 
         self.__enemyhealth.set(1)

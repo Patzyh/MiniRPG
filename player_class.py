@@ -77,7 +77,7 @@ class Spieler:
             self.__ui.update_experience(self.__xp / self.__max_xp)
             self.update_max_xp()
             self.__maxhealth += 2
-            self.__atk += 1
+            self.__atk += 2
             self.__health += 2
             self.__ui.update_health(self.__health / self.__maxhealth)
 

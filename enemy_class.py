@@ -69,3 +69,4 @@ class Gegner:
     @xp.setter
     def xp(self, xp):
         self.__enemy["xp"] = xp
+
