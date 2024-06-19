@@ -1,7 +1,6 @@
 from player_class import Spieler
 from enemy_class import Gegner
 import random
-import time
 
 
 class Spiel:
@@ -25,7 +24,7 @@ class Spiel:
 
     def next_attack(self):
         if self.__gegner.dead or self.__spieler.get_hp() <= 0:
-            self.__current_attacker = None
+            self.__current_attacker = None #type shit
             return
 
         print(self.__current_attacker)
@@ -103,7 +102,7 @@ class Spiel:
     def update_location(self):
         if self.__location == "The Dark Forest":
             self.__location = "Auf dem Weg zum Hounted Castle"
-        elif self.__location == "Hounted Castle":
+        elif self.__location == "Haunted Castle":
             self.__location = "Auf dem Weg zum Turm von Malakar"
         if self.__round == 5:
             self.__ui.print("Du befindest dich im dunklen Wald. Es ist Nacht und du siehst kaum die Hand vor Augen.", 6000)
@@ -111,7 +110,7 @@ class Spiel:
             # ui current location update
         elif self.__round == 12:
             self.__ui.print("Du befindest dich vor einem alten Schloss. Es ist verlassen und du siehst nur noch die Ruinen.", 6000)
-            self.__location = "Hounted Castle"
+            self.__location = "Hanted Castle"
             # ui current location update
         elif self.__round == 20:
             self.__ui.print("Du befindest dich vor Malakars Turm. Ein finsterer Ort, an dem böse Mächte wirken.", 6000)
@@ -122,6 +121,7 @@ class Spiel:
     def stop_game(self):
         self.__ui.page_select(5)
 
+    # Wenn Sie sich das ansehen sollten Sie sich nicht die Getter und Setter ansehen
     # Getter and Setter for ui
     @property
     def ui(self):
