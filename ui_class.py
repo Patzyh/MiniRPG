@@ -392,7 +392,7 @@ class App(tk.CTk):
 
     def play_title_music(self): # fun fact, league of legends musik
         pygame.mixer.init()
-        pygame.mixer.music.load("resources/sounds/blind_pick_music.mp3")
+        pygame.mixer.music.load("resources/sounds/Lil Toe - Glock With The Beam [ ezmp3.cc ].mp3")
         pygame.mixer.music.play(loops=-1)
 
     def play_game_music(self):
