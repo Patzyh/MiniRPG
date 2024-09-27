@@ -28,4 +28,4 @@
   - irgendwie auch die gegner dahingegen anpassen, dass die dann mehr damage machen und so idk, kann tarek machen
 - [x] Credits
 - [x] Levelsytem
-- [ ] FLucht vor Gegener
+- [x] FLucht vor Gegener
